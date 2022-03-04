@@ -13,6 +13,7 @@ Les données présentes se référent aux Jeux Olympiques de Pékin de 2022. Il 
 * Les athlètes médaillés, avec leur nom, leur origine, leur sport, leur discipline, et les médailles
 * Les médailles par pays, avec le nombre de médailles d'or, d'argent, de bronze et le nombre total par pays
 * Le calendrier, avec toutes les disciplines, les dates de cérémonies, de jour de compétition et de remise des médailles
+?????
 
 ----
 
@@ -22,4 +23,5 @@ Mon but n'est pas de découvrir quoi que ce soit étant donné que j'ai beaucoup
 ----
 
 ### Références : Qui d'autre dans le web ou dans la recherche a utilisé ces données ? Dans quel but ?
-D'après les [statistiques de Kaggle](https://www.kaggle.com/vaibhavchopra2/olympic-games-beijing-2022/activity), et au jour d'aujourd'hui (le 4 mars 2022), ce jeu de données a généré 1633 vues et 322 téléchargements. 
+D'après les [statistiques de Kaggle](https://www.kaggle.com/vaibhavchopra2/olympic-games-beijing-2022/activity), et au jour d'aujourd'hui (le 4 mars 2022), ce jeu de données a généré 1633 vues et 322 téléchargements. Cependant il est compliqué d'estimer qui s'est servi de ce jeu de données et pour en faire quoi. Les Jeux Olympiques ont été beaucoup médiatisés et chacun aurait pu créer son propre jeu de données en fonction de résultats des Jeux Olympiques. 
+Il est donc compliqué pour moi de savoir si les journaux, les divers sites sportifs ou autres ont utilisé ces [données de Kaggle](https://www.kaggle.com/vaibhavchopra2/olympic-games-beijing-2022/activity), d'autres jeux de données ou s'ils ont réalisé leurs propres recherches.
