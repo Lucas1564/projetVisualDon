@@ -13,6 +13,7 @@ Les données présentes se référent aux Jeux Olympiques de Pékin de 2022. Il 
 * Les athlètes médaillés, avec leur nom, leur origine, leur sport, leur discipline, et les médailles
 * Les médailles par pays, avec le nombre de médailles d'or, d'argent, de bronze et le nombre total par pays
 * Le calendrier, avec toutes les disciplines, les dates de cérémonies, de jour de compétition et de remise des médailles
+
 ?????
 
 ----
