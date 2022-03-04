@@ -6,6 +6,8 @@ Projet VisualDon - Olympics Games - Lucas Cuennet
 ### Contexte : d'où viennent les données, qui les a créées et dans quel contexte ?
 Les données viennent du site [Kaggle](www.kaggle.com) et ont été créées par [VaibhavChopra](https://www.kaggle.com/vaibhavchopra2), un étudiant de l'université de Chitkara, en Inde. Ces données s'inscrivent dans le contexte actuel sportif. En effet, les Jeux Olympiques de Beijing 2022 ont eu lieu du 4 au 20 février 2022. Les données ont été ajoutées par [VaibhavChopra](https://www.kaggle.com/vaibhavchopra2), le 22 février 2022, soit 2 jours après la fin des Jeux Olympiques.
 
+----
+
 ### Description : Comment sont structurées les données ? Parler du format, des attributs et du type de données ?
 Les données présentes se référent aux Jeux Olympiques de Pékin de 2022. Il y a trois jeux de données : 
 * Les athlètes médaillés, avec leur nom, leur origine, leur sport, leur discipline, et les médailles
@@ -17,4 +19,7 @@ Les données présentes se référent aux Jeux Olympiques de Pékin de 2022. Il 
 ### But : qu'est-ce que vous voulez découvrir ? Des tendances ? Vous voulez explorer ou expliquer ?
 Mon but n'est pas de découvrir quoi que ce soit étant donné que j'ai beaucoup suivi les Jeux Olympiques de Pékin de 2022. Je cherche à expliquer et démontrer certains résultats ou certaines performances par pays ou par athlète. Mon but est de vulgariser ce jeux de données qui peut paraître indigeste aux premiers abords. 
 
+----
+
 ### Références : Qui d'autre dans le web ou dans la recherche a utilisé ces données ? Dans quel but ?
+D'après les [statistiques de Kaggle](https://www.kaggle.com/vaibhavchopra2/olympic-games-beijing-2022/activity), et au jour d'aujourd'hui (le 4 mars 2022), ce jeu de données a généré 1633 vues et 322 téléchargements. 
