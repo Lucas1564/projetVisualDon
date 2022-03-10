@@ -18,6 +18,7 @@ Les données présentes se référent aux Jeux Olympiques de Pékin de 2022. Il 
 
 Les différentes données mentionnées ci-dessus sont au format .CVS. Nous pouvons donc retrouver différentes colonnes pour chaques jeux de données différentes :
 
+
 Pour le jeu de données des athlètes médaillés nous retrouvons les colonnes suivantes au format suivant :
 * Name (Athlete Name) -> String
 * NOC (Country) -> String
@@ -25,12 +26,14 @@ Pour le jeu de données des athlètes médaillés nous retrouvons les colonnes s
 * EVENT (Event name) -> String
 * MEDAL (Medal) -> String
 
+
 Pour le jeu de données des médailles par pays nous retrouvons les colonnes suivantes au format suivant :
 * NOC (Countries participating) -> String
 * Gold (Gold medal won) -> Integer
 * Silver (Silver medal won) -> Integer
 * Bronze (Bronze medal won) -> Integer
 * Total (Total medal won) -> Integer
+
 
 Pour le jeu de données du calendrier nous retrouvons les colonnes suivantes au format suivant :
 * Ceremonies (event type) -> String
@@ -47,7 +50,7 @@ Pour le jeu de données du calendrier nous retrouvons les colonnes suivantes au 
 ----
 
 ### But : qu'est-ce que vous voulez découvrir ? Des tendances ? Vous voulez explorer ou expliquer ?
-Mon but n'est pas de découvrir quoi que ce soit étant donné que j'ai beaucoup suivi les Jeux Olympiques de Pékin de 2022. Je cherche à expliquer et démontrer certains résultats ou certaines performances par pays ou par athlète. Mon but est de vulgariser ce jeux de données qui peut paraître indigeste aux premiers abords.
+Les jeux olympiques de Pékin 2022 ont été énormément médiatisés. ils ont été énormément critiqué pour leurs valeurs qu'ils représentaient. En pleine crise du COVID, ces jeux ont quand même pu avoir lieu en gardant un suivi sanitaire de qualité. C'est donc grâce à cette lueur d'espoir (premier grand événnement durant le COVID) que nous avons choisi de vouloir parler de ces jeux olympiques de Pékin 2022. De plus, les horaires des compétitions n'étaient pas propice au bon visionnage de chaques compétitions en Suisse. Notre but est donc de pouvoir informer certains habitants des pays n'ayant pas le bons horaires pour le visionnage de cette compétition. Pour la fédération sportive suisse, ces jeux olympiques ont été un franc succès avec beaucoup de médailles. Ils ont même réussi un record de médaille dans le domaine du ski alpin. Ce projet pourra donc informer toutes les personnes souhaitant se renseigner sur les jeux d'olypiques de Pékin 2022. Nous pourrons donc rendre ces données abrutes en des données bien plus visuelles et dynamique pour les visiteurs de notre projet.
 
 ----
 
