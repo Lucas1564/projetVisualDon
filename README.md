@@ -52,8 +52,18 @@ Pour le jeu de données du calendrier nous retrouvons les colonnes suivantes au 
 ### But : qu'est-ce que vous voulez découvrir ? Des tendances ? Vous voulez explorer ou expliquer ?
 Les jeux olympiques de pékin 2022 ont été énormément médiatisés. ils ont été énormément critiqué pour leur pour qu'ils représentaient. En pleine crise du COVID, ces jeux ont quand même pu avoir lieu en gardant un suivi sanitaire de qualité. C'est donc grâce à cette lueur d'espoir (premier grand événement durant le COVID) que nous avons choisi de vouloir parler de ces jeux olympiques de pékin 2022. De plus, les horaires des compétitions n'étaient pas propices au bon visionnage de chaque compétition en Suisse. Notre but est donc de pouvoir informer certains habitants des pays n'ayant pas les bons horaires pour le visionnage de cette compétition. Pour la fédération sportive suisse, ces jeux olympiques ont été un franc succès avec beaucoup de médailles. Ils ont même réussi un record de médaille dans le domaine du ski alpin. Ce projet pourra donc informer toutes les personnes souhaitant se renseigner sur les jeux d'olypiques de Pékin 2022. Nous pourrons donc rendre ces données abrutes en des données bien plus visuelles et dynamique pour les visiteurs de notre projet.
 
+Énormément d'installation a été faites artificiellement. Ceci a été la source de beaucoup de critique. La neige était faite artificiellement et cela a peut-être pu changer le dénoumement de quelques médailles. Notre projet pourrait donc évoluer et nous pourrions donc ajouter des données d'autres jeux olympiques qui nous permettraient de comparer les résultats et de peut-être trouver des avantages ou désavantages de l'artificielle pour certaines nations.
+
 ----
 
 ### Références : Qui d'autre dans le web ou dans la recherche a utilisé ces données ? Dans quel but ?
 D'après les [statistiques de Kaggle](https://www.kaggle.com/vaibhavchopra2/olympic-games-beijing-2022/activity), et au jour d'aujourd'hui (le 4 mars 2022), ce jeu de données a généré 1633 vues et 322 téléchargements. Cependant il est compliqué d'estimer qui s'est servi de ce jeu de données et pour en faire quoi. Les Jeux Olympiques ont été beaucoup médiatisés et chacun aurait pu créer son propre jeu de données en fonction de résultats des Jeux Olympiques.
-Il est donc compliqué pour moi de savoir si les journaux, les divers sites sportifs ou autres ont utilisé ces [données de Kaggle](https://www.kaggle.com/vaibhavchopra2/olympic-games-beijing-2022/activity), d'autres jeux de données ou s'ils ont réalisé leurs propres recherches.
+Il est donc compliqué pour nous de savoir si les journaux, les divers sites sportifs ou autres ont utilisé ces [données de Kaggle](https://www.kaggle.com/vaibhavchopra2/olympic-games-beijing-2022/activity), d'autres jeux de données ou s'ils ont réalisé leurs propres recherches.
+
+
+Cependant nous pouvons affirmer que des sites/journaux utilisent déjà la possibilité de visualiser ces données sous forme plus digeste pour les visiteurs. Nous avons comme exemple les sites ci-dessous :
+* [RTS Sport](https://www.rts.ch/sport/jo/beijing-2022/widgets/resultats)
+* [L'équipe](https://www.lequipe.fr/jeux-olympiques-hiver/page-tableau-des-medailles/par-pays)
+* [Olympics](https://olympics.com/beijing-2022/olympic-games/fr/resultats/tous-les-sports/compte-de-medailles.htm)
+
+Nous pouvons donc remarquer que même le site officiel [Olympics](https://olympics.com/beijing-2022/olympic-games/fr/resultats/tous-les-sports/compte-de-medailles.htm) utilise des données similaires à celle de [Kaggle](https://www.kaggle.com/vaibhavchopra2/olympic-games-beijing-2022/activity). Ils ont pour but de pouvoir informer les visiteurs du site tant qu'au tableau de médaille sur lequel nous pouvons apporter des filtres. Ces données sont cependant très textuelles et non visuelles comme nous souhaiterions le faire dans le cadre de notre projet.
