@@ -1,10 +1,12 @@
 # projetVisualDon
-Projet VisualDon - Olympics Games - Lucas Cuennet
+Projet VisualDon - Olympics Games - Lucas Cuennet et Eloi Coquoz
 
 [Source] : (https://www.kaggle.com/vaibhavchopra2/olympic-games-beijing-2022?select=Medalists.csv)
 
 ### Contexte : d'où viennent les données, qui les a créées et dans quel contexte ?
 Les données viennent du site [Kaggle](www.kaggle.com) et ont été créées par [VaibhavChopra](https://www.kaggle.com/vaibhavchopra2), un étudiant de l'université de Chitkara, en Inde. Ces données s'inscrivent dans le contexte actuel sportif. En effet, les Jeux Olympiques de Beijing 2022 ont eu lieu du 4 au 20 février 2022. Les données ont été ajoutées par [VaibhavChopra](https://www.kaggle.com/vaibhavchopra2), le 22 février 2022, soit 2 jours après la fin des Jeux Olympiques.
+
+[VaibhavChopra](https://www.kaggle.com/vaibhavchopra2) a utilisé le site officiel des jeux olypiques pour la création de ces données.
 
 ----
 
@@ -14,7 +16,33 @@ Les données présentes se référent aux Jeux Olympiques de Pékin de 2022. Il 
 * Les médailles par pays, avec le nombre de médailles d'or, d'argent, de bronze et le nombre total par pays
 * Le calendrier, avec toutes les disciplines, les dates de cérémonies, de jour de compétition et de remise des médailles
 
-Type : Excel
+Les différentes données mentionnées ci-dessus sont au format .CVS. Nous pouvons donc retrouver différentes colonnes pour chaques jeux de données différentes :
+
+Pour le jeu de données des athlètes médaillés nous retrouvons les colonnes suivantes au format suivant :
+* Name (Athlete Name) -> String
+* NOC (Country) -> String
+* SPORTS (Sport type) -> String
+* EVENT (Event name) -> String
+* MEDAL (Medal) -> String
+
+Pour le jeu de données des médailles par pays nous retrouvons les colonnes suivantes au format suivant :
+* NOC (Countries participating) -> String
+* Gold (Gold medal won) -> Integer
+* Silver (Silver medal won) -> Integer
+* Bronze (Bronze medal won) -> Integer
+* Total (Total medal won) -> Integer
+
+Pour le jeu de données du calendrier nous retrouvons les colonnes suivantes au format suivant :
+* Ceremonies (event type) -> String
+* 2 (2 Feb 2022) -> String
+* 3 (3 Feb 2022) -> String
+* 4 (4 Feb 2022) -> String
+* 5 (5 Feb 2022) -> String
+* 6 (6 Feb 2022) -> String
+* 7 (7 Feb 2022) -> String
+* 8 (8 Feb 2022) -> String
+* 9 (9 Feb 2022) -> String
+* 10 (10 Feb 2022) -> String
 
 ----
 
