@@ -19,7 +19,7 @@ Les données présentes se référent aux Jeux Olympiques de Pékin de 2022. Il 
 Les différentes données mentionnées ci-dessus sont au format .CSV. Nous pouvons donc retrouver différentes colonnes pour chaque jeu de données différent :
 
 
-Pour le jeu de données des athlètes médaillés nous retrouvons les colonnes suivantes au format suivant :
+Pour le jeu de données des athlètes médaillés, nous retrouvons les colonnes suivantes, au format suivant :
 * Name (Athlete Name) -> String
 * NOC (Country) -> String
 * SPORTS (Sport type) -> String
@@ -27,7 +27,7 @@ Pour le jeu de données des athlètes médaillés nous retrouvons les colonnes s
 * MEDAL (Medal) -> String
 
 
-Pour le jeu de données des médailles par pays nous retrouvons les colonnes suivantes au format suivant :
+Pour le jeu de données des médailles par pays, nous retrouvons les colonnes suivantes, au format suivant :
 * NOC (Countries participating) -> String
 * Gold (Gold medal won) -> Integer
 * Silver (Silver medal won) -> Integer
@@ -35,7 +35,7 @@ Pour le jeu de données des médailles par pays nous retrouvons les colonnes sui
 * Total (Total medal won) -> Integer
 
 
-Pour le jeu de données du calendrier nous retrouvons les colonnes suivantes au format suivant :
+Pour le jeu de données du calendrier, nous retrouvons les colonnes suivantes, au format suivant :
 * Ceremonies (event type) -> String
 * 2 (2 Feb 2022) -> String
 * 3 (3 Feb 2022) -> String
@@ -50,9 +50,11 @@ Pour le jeu de données du calendrier nous retrouvons les colonnes suivantes au 
 ----
 
 ### But : qu'est-ce que vous voulez découvrir ? Des tendances ? Vous voulez explorer ou expliquer ?
-Les Jeux Olympiques de Pékin 2022 ont été énormément médiatisés. En pleine crise du COVID, ces jeux ont quand même pu avoir lieu en gardant un suivi sanitaire de qualité. C'est donc grâce à cette lueur d'espoir (premier grand événement durant le COVID) que nous avons choisi de vouloir parler de ces Jeux Olympiques de Pékin 2022. De plus, les horaires des compétitions n'étaient pas propices au bon visionnage de chaque compétition en Suisse. Notre but est donc de pouvoir informer certains habitants des pays n'ayant pas les bons horaires pour le visionnage de cette compétition. Pour la fédération sportive suisse, ces Jeux Olympiques ont été un franc succès avec beaucoup de médailles. Ils ont même réussi un record de médaille dans le domaine du ski alpin. Ce projet pourra donc informer toutes les personnes souhaitant se renseigner sur les Jeux Olympiques de Pékin 2022. Nous pourrons donc transformer ces données brutes en des données bien plus visuelles et dynamiques pour les visiteurs de notre projet.
+Les Jeux Olympiques de Pékin 2022 ont été énormément médiatisés. En pleine crise du COVID, ces jeux ont quand même pu avoir lieu en gardant un suivi sanitaire de qualité. C'est donc grâce à cette lueur d'espoir (premier grand événement durant le COVID) que nous avons choisi de vouloir parler de ces Jeux Olympiques de Pékin 2022. De plus, les horaires des compétitions n'étaient pas propices au bon visionnage de chaque compétition en Suisse. Notre but est donc de pouvoir informer certains habitants des pays n'ayant pas pu profiter des bons horaires pour le visionnage de cette compétition. 
 
-Énormément d'installation ont été faites artificiellement. Ceci a été la source de beaucoup de critiques. La neige était 100% artificielle et cela a peut-être pu changer le dénoumement de quelques médailles. Notre projet pourrait donc évoluer et nous pourrions donc ajouter des données d'autres Jeux Olympiques qui nous permettraient de comparer les résultats et de, peut-être, trouver des avantages ou désavantages de la neige artificielle pour certaines nations.
+Pour la fédération sportive Suisse, ces Jeux Olympiques ont été un franc succès avec beaucoup de médailles. Ils ont même réussi un record de médailles dans le domaine du ski alpin. Ce projet pourra donc informer toutes les personnes souhaitant se renseigner sur les Jeux Olympiques de Pékin 2022. Nous pourrons donc transformer ces données brutes en des données bien plus visuelles et dynamiques pour les visiteurs de notre projet.
+
+Énormément d'installations ont été faites artificiellement. Ceci a été la source de beaucoup de critiques. La neige était 100% artificielle et cela a peut-être pu changer le dénoumement de quelques médailles. Notre projet pourrait évoluer et nous pourrions donc ajouter des données d'autres Jeux Olympiques qui nous permettraient de comparer les résultats et de, peut-être, trouver des avantages ou désavantages de la neige artificielle pour certaines nations.
 
 ----
 
