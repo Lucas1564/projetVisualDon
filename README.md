@@ -50,7 +50,7 @@ Pour le jeu de données du calendrier, nous retrouvons les colonnes suivantes, a
 ----
 
 ### But : qu'est-ce que vous voulez découvrir ? Des tendances ? Vous voulez explorer ou expliquer ?
-Les Jeux Olympiques de Pékin 2022 ont été énormément médiatisés. En pleine crise du COVID, ces jeux ont quand même pu avoir lieu en gardant un suivi sanitaire de qualité. C'est donc grâce à cette lueur d'espoir (premier grand événement durant le COVID) que nous avons choisi de vouloir parler de ces Jeux Olympiques de Pékin 2022. De plus, les horaires des compétitions n'étaient pas propices au bon visionnage de chaque compétition en Suisse. Notre but est donc de pouvoir informer certains habitants des pays n'ayant pas pu profiter des bons horaires pour le visionnage de cette compétition. 
+Les Jeux Olympiques de Pékin 2022 ont été énormément médiatisés. En pleine crise du COVID, ces jeux ont quand même pu avoir lieu en gardant un suivi sanitaire de qualité. C'est donc grâce à cette lueur d'espoir (premier grand événement durant le COVID) que nous avons choisi de vouloir parler de ces Jeux Olympiques de Pékin 2022. De plus, les horaires des compétitions n'étaient pas propices au bon visionnage de chaque compétition en Suisse. Notre but est donc de pouvoir informer certains habitants des pays n'ayant pas pu profiter des bons horaires pour le visionnage de cette compétition.
 
 Pour la fédération sportive Suisse, ces Jeux Olympiques ont été un franc succès avec beaucoup de médailles. Ils ont même réussi un record de médailles dans le domaine du ski alpin. Ce projet pourra donc informer toutes les personnes souhaitant se renseigner sur les Jeux Olympiques de Pékin 2022. Nous pourrons donc transformer ces données brutes en des données bien plus visuelles et dynamiques pour les visiteurs de notre projet.
 
@@ -68,12 +68,9 @@ Cependant nous pouvons affirmer que des sites/journaux utilisent déjà la possi
 * [L'équipe](https://www.lequipe.fr/jeux-olympiques-hiver/page-tableau-des-medailles/par-pays)
 * [Olympics](https://olympics.com/beijing-2022/olympic-games/fr/resultats/tous-les-sports/compte-de-medailles.htm)
 
-<<<<<<< HEAD
+
 Nous pouvons donc remarquer que même le site officiel [Olympics](https://olympics.com/beijing-2022/olympic-games/fr/resultats/tous-les-sports/compte-de-medailles.htm) utilise des données similaires à celle de [Kaggle](https://www.kaggle.com/vaibhavchopra2/olympic-games-beijing-2022/activity). Ils ont pour but de pouvoir informer les visiteurs du site tant qu'au tableau de médaille sur lequel nous pouvons apporter des filtres. Ces données sont cependant très textuelles et non visuelles comme nous souhaiterions le faire dans le cadre de notre projet.
 
 
 ### Wireframes
-<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2Fpdou1A9og01M5oZmkPUFbO%2FWireframesJOBejing2022%3Fnode-id%3D0%253A1" allowfullscreen></iframe>
-=======
-Nous pouvons donc remarquer que même le site officiel [Olympics](https://olympics.com/beijing-2022/olympic-games/fr/resultats/tous-les-sports/compte-de-medailles.htm) utilise des données similaires à celle de [Kaggle](https://www.kaggle.com/vaibhavchopra2/olympic-games-beijing-2022/activity). Ils ont pour but de pouvoir informer les visiteurs du site au niveau du tableau de médailles sur lequel nous pouvons ajouter des filtres. Ces données sont très textuelles et non visuelles, contrairement à ce que nous souhaiterions faire dans le cadre de notre projet.
->>>>>>> b6e077f4fd791a32231764209ce53241e419f096
+https://www.figma.com/file/pdou1A9og01M5oZmkPUFbO/WireframesJOBejing2022?node-id=0%3A1
