@@ -67,3 +67,7 @@ Cependant nous pouvons affirmer que des sites/journaux utilisent déjà la possi
 * [Olympics](https://olympics.com/beijing-2022/olympic-games/fr/resultats/tous-les-sports/compte-de-medailles.htm)
 
 Nous pouvons donc remarquer que même le site officiel [Olympics](https://olympics.com/beijing-2022/olympic-games/fr/resultats/tous-les-sports/compte-de-medailles.htm) utilise des données similaires à celle de [Kaggle](https://www.kaggle.com/vaibhavchopra2/olympic-games-beijing-2022/activity). Ils ont pour but de pouvoir informer les visiteurs du site tant qu'au tableau de médaille sur lequel nous pouvons apporter des filtres. Ces données sont cependant très textuelles et non visuelles comme nous souhaiterions le faire dans le cadre de notre projet.
+
+
+### Wireframes
+<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2Fpdou1A9og01M5oZmkPUFbO%2FWireframesJOBejing2022%3Fnode-id%3D0%253A1" allowfullscreen></iframe>
