@@ -73,4 +73,4 @@ Nous pouvons donc remarquer que même le site officiel [Olympics](https://olympi
 
 
 ### Wireframes
-https://www.figma.com/file/pdou1A9og01M5oZmkPUFbO/WireframesJOBejing2022?node-id=0%3A1
+[Wireframe](https://www.figma.com/file/pdou1A9og01M5oZmkPUFbO/WireframesJOBejing2022?node-id=0%3A1)
