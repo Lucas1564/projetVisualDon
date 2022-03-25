@@ -9,26 +9,33 @@
 </head>
 
 <body>
+  <div class="container">
+    <div class="row">
 
-  <!------------------------------------------------------------------------------------------------------------>
+      <!------------------------------------------------------------------------------------------------------------>
 
-  <section id="athlete-section">
-    <h4>Athletes Suisses ayant gagné une médaille</h4>
+      <section id="athlete-section">
+        <h4>Athletes Suisses ayant gagné une médaille</h4>
 
-    <div class="athlete-list">
+        <div class="athlete-list row">
+        </div>
+
+        <template id="athlete-list-item-template">
+          <div class="col-xs-3 col-lg-3 athlete">
+            <div class="row">
+              <a href="#">
+                <img src="" width="100" height="100" />
+                <div class="athlete-list-item-title"></div>
+              </a>
+            </div>
+          </div>
+        </template>
+      </section>
+
+
+      <!------------------------------------------------------------------------------------------------------------>
     </div>
-
-    <template id="athlete-list-item-template">
-      <a href="#">
-        <img src="" width="100" height="100" />
-        <div class="athlete-list-item-title"></div>
-      </a>
-    </template>
-  </section>
-
-
-  <!------------------------------------------------------------------------------------------------------------>
-
+  </div>
 </body>
 
 </html>

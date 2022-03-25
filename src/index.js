@@ -2,6 +2,8 @@ import * as d3 from 'd3';
 import athletes from '../assets/data/Medalists.csv';
 import pays from '../assets/data/Medals_Standing.csv';
 import agenda from '../assets/data/Olympic Schedule.csv';
+//import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 console.log(athletes);
 console.log(pays);
