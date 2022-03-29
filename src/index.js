@@ -4,6 +4,7 @@ import pays from '../assets/data/Medals_Standing.csv';
 import agenda from '../assets/data/Olympic Schedule.csv';
 //import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import renderCalSection from './sections/cal'
 
 console.log(athletes);
 console.log(pays);
@@ -62,7 +63,7 @@ function displaySection() {
   switch (sectionSplit[0]) {
     case '#calendrier':
       if (sectionSplit[1]) {
-        alert("day" + sectionSplit[1])
+        renderCalSection(sectionSplit[1]);
       } else {
         alert("Calendrier")
       }
@@ -75,7 +76,7 @@ function displaySection() {
       }
       break;
     case '#home':
-      alert("Home")
+      renderCalSection(1);
       break;
   }
 }
