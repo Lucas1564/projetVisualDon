@@ -77,6 +77,7 @@ function displaySection() {
       break;
     case '#home':
       renderCalSection(1);
+      //alert("Home")
       break;
   }
 }
@@ -86,3 +87,59 @@ window.addEventListener('hashchange', displaySection)
 
 // Affichage au chargement pour traiter l'url en cours (exemple: on ouvre un lien dans un nouvel onglet)
 displaySection()
+
+
+// ------------------------------------------------------------
+
+
+//------- Dessiner avec les données -------
+const WIDTH = 1500
+const HEIGHT = 1500
+d3.select("body").append("div").attr("class","mon-svg");
+d3.select(".mon-svg").append("svg");
+const myDiv2 = d3.select("svg").attr("width", WIDTH).attr("height", HEIGHT)
+
+//Sort by number of medals
+var sortedTabPays = pays.sort(function(a, b) {return b.Total - a.Total});
+
+let tabPays=[];
+let tabNbMedaillesPays = [];
+for (var i = 0; i < 10; i++) {
+  //console.log("Médailles gold par pays : "+ pays[i].NOC + " " + pays[i].Total)
+  //console.log("Nbr de colonnes : " + i);
+  tabPays[i]= sortedTabPays[i].NOC;
+  tabNbMedaillesPays[i] = sortedTabPays[i].Total;
+      //Create chart with precedent tab[]
+      const widthRect = 30;
+      myDiv2.selectAll("rect")
+        .data(tabNbMedaillesPays)
+        .enter()
+        .append("rect")
+        .attr('x', (d,i) => (i*40+50))
+        .attr('y', d => 500-d*10)
+        .attr('width', widthRect)
+        .attr('height', d => d*10)
+        .attr('stroke', 'black')
+        .attr('fill', '#69a3b2');
+  
+        //https://jsfiddle.net/xfksm08b/10/
+        var texts = myDiv2.selectAll("text")
+          .data(tabNbMedaillesPays)
+          .enter()
+          .append("text");
+  
+        texts
+        .attr('x', (d,i) => (i*40+55))
+        .attr('y', d => 500+20)
+        .text(function(d){ return d});
+
+}
+
+
+console.log("Tab Pays : "+tabPays);
+console.log("Tab Medaille par pays : "+tabNbMedaillesPays);
+for (var i = 0; i < agenda.length; i++) {
+  console.log(agenda[i])
+}
+
+
