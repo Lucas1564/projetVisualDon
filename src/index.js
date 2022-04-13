@@ -89,14 +89,12 @@ window.addEventListener('hashchange', displaySection)
 displaySection()
 
 
-// ------------------------------------------------------------
+// ---------------------- Top 10 medals --------------------------------------
 
-
-//------- Dessiner avec les données -------
-const WIDTH = 1500
-const HEIGHT = 1500
-d3.select("body").append("div").attr("class","mon-svg");
-d3.select(".mon-svg").append("svg");
+const WIDTH = 800
+const HEIGHT = 800
+d3.select("body").append("div").attr("class","barChart");
+d3.select(".barChart").append("svg");
 const myDiv2 = d3.select("svg").attr("width", WIDTH).attr("height", HEIGHT)
 
 //Sort by number of medals
@@ -104,42 +102,50 @@ var sortedTabPays = pays.sort(function(a, b) {return b.Total - a.Total});
 
 let tabPays=[];
 let tabNbMedaillesPays = [];
+
 for (var i = 0; i < 10; i++) {
   //console.log("Médailles gold par pays : "+ pays[i].NOC + " " + pays[i].Total)
   //console.log("Nbr de colonnes : " + i);
   tabPays[i]= sortedTabPays[i].NOC;
   tabNbMedaillesPays[i] = sortedTabPays[i].Total;
-      //Create chart with precedent tab[]
-      const widthRect = 30;
-      myDiv2.selectAll("rect")
-        .data(tabNbMedaillesPays)
-        .enter()
-        .append("rect")
-        .attr('x', (d,i) => (i*40+50))
-        .attr('y', d => 500-d*10)
-        .attr('width', widthRect)
-        .attr('height', d => d*10)
-        .attr('stroke', 'black')
-        .attr('fill', '#69a3b2');
-  
-        //https://jsfiddle.net/xfksm08b/10/
-        var texts = myDiv2.selectAll("text")
-          .data(tabNbMedaillesPays)
-          .enter()
-          .append("text");
-  
-        texts
-        .attr('x', (d,i) => (i*40+55))
-        .attr('y', d => 500+20)
-        .text(function(d){ return d});
-
 }
 
-
-console.log("Tab Pays : "+tabPays);
-console.log("Tab Medaille par pays : "+tabNbMedaillesPays);
-for (var i = 0; i < agenda.length; i++) {
-  console.log(agenda[i])
-}
+var svg = d3.select("svg"),
+            margin = 200,
+            width = svg.attr("width") - margin,
+            height = svg.attr("height") - margin
 
 
+var xScale = d3.scaleBand().range([0, width]).padding(0.5),
+            yScale = d3.scaleLinear().range([height, 0]);
+
+var g = svg.append("g")
+            .attr("transform", "translate(" + 100 + "," + 100 + ")");
+
+    
+        xScale.domain(tabPays);
+        yScale.domain([0, d3.max(tabNbMedaillesPays)]);
+
+        g.append("g")
+         .attr("transform", "translate(0," + height + ")")
+         .call(d3.axisBottom(xScale).tickFormat(function(d){
+           return d;
+         })
+         );
+
+        g.append("g")
+         .call(d3.axisLeft(yScale).tickFormat(function(d){
+             return + d;
+         }).ticks(4));
+
+
+       g.selectAll(".bar")
+         .data(tabNbMedaillesPays)
+         .enter().append("rect")
+         .attr("class", "bar")
+         .attr("x", function(d,i) { return xScale(tabPays[i]); })
+         .attr("y", function(d) { return yScale(d); })
+         .attr("width", xScale.bandwidth())
+         .attr("height", function(d) { return height - yScale(d); });
+
+         
