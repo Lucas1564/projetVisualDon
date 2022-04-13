@@ -124,7 +124,7 @@ var g = svg.append("g")
 
     
         xScale.domain(tabPays);
-        yScale.domain([0, d3.max(tabNbMedaillesPays)]);
+        yScale.domain([0, (d3.max(tabNbMedaillesPays)+3)]);
 
         g.append("g")
          .attr("transform", "translate(0," + height + ")")
@@ -135,7 +135,7 @@ var g = svg.append("g")
 
         g.append("g")
          .call(d3.axisLeft(yScale).tickFormat(function(d){
-             return + d;
+             return d;
          }).ticks(4));
 
 
