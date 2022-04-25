@@ -93,59 +93,64 @@ displaySection()
 
 const WIDTH = 800
 const HEIGHT = 800
-d3.select("body").append("div").attr("class","barChart");
+d3.select("body").append("div").attr("class", "barChart");
 d3.select(".barChart").append("svg");
 const myDiv2 = d3.select("svg").attr("width", WIDTH).attr("height", HEIGHT)
 
 //Sort by number of medals
-var sortedTabPays = pays.sort(function(a, b) {return b.Total - a.Total});
+var sortedTabPays = pays.sort(function(a, b) {
+  return b.Total - a.Total
+});
 
-let tabPays=[];
+let tabPays = [];
 let tabNbMedaillesPays = [];
 
 for (var i = 0; i < 10; i++) {
   //console.log("Médailles gold par pays : "+ pays[i].NOC + " " + pays[i].Total)
   //console.log("Nbr de colonnes : " + i);
-  tabPays[i]= sortedTabPays[i].NOC;
+  tabPays[i] = sortedTabPays[i].NOC;
   tabNbMedaillesPays[i] = sortedTabPays[i].Total;
 }
 
 var svg = d3.select("svg"),
-            margin = 200,
-            width = svg.attr("width") - margin,
-            height = svg.attr("height") - margin
+  margin = 200,
+  width = svg.attr("width") - margin,
+  height = svg.attr("height") - margin
 
 
 var xScale = d3.scaleBand().range([0, width]).padding(0.5),
-            yScale = d3.scaleLinear().range([height, 0]);
+  yScale = d3.scaleLinear().range([height, 0]);
 
 var g = svg.append("g")
-            .attr("transform", "translate(" + 100 + "," + 100 + ")");
-
-    
-        xScale.domain(tabPays);
-        yScale.domain([0, (d3.max(tabNbMedaillesPays)+3)]);
-
-        g.append("g")
-         .attr("transform", "translate(0," + height + ")")
-         .call(d3.axisBottom(xScale).tickFormat(function(d){
-           return d;
-         })
-         );
-
-        g.append("g")
-         .call(d3.axisLeft(yScale).tickFormat(function(d){
-             return d;
-         }).ticks(4));
+  .attr("transform", "translate(" + 100 + "," + 100 + ")");
 
 
-       g.selectAll(".bar")
-         .data(tabNbMedaillesPays)
-         .enter().append("rect")
-         .attr("class", "bar")
-         .attr("x", function(d,i) { return xScale(tabPays[i]); })
-         .attr("y", function(d) { return yScale(d); })
-         .attr("width", xScale.bandwidth())
-         .attr("height", function(d) { return height - yScale(d); });
+xScale.domain(tabPays);
+yScale.domain([0, (d3.max(tabNbMedaillesPays) + 3)]);
 
-         
+g.append("g")
+  .attr("transform", "translate(0," + height + ")")
+  .call(d3.axisBottom(xScale).tickFormat(function(d) {
+    return d;
+  }));
+
+g.append("g")
+  .call(d3.axisLeft(yScale).tickFormat(function(d) {
+    return d;
+  }).ticks(4));
+
+
+g.selectAll(".bar")
+  .data(tabNbMedaillesPays)
+  .enter().append("rect")
+  .attr("class", "bar")
+  .attr("x", function(d, i) {
+    return xScale(tabPays[i]);
+  })
+  .attr("y", function(d) {
+    return yScale(d);
+  })
+  .attr("width", xScale.bandwidth())
+  .attr("height", function(d) {
+    return height - yScale(d);
+  });
