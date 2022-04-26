@@ -51,6 +51,14 @@ for (var j = 1; j < cal; j++) {
 }
 
 
+function renderPopup(athlete) {
+  document.querySelector('.namePopup').innerText = athletes[athlete].NAME;
+  document.querySelector('.sportPopup').innerText = athletes[athlete].SPORTS;
+  document.querySelector('.eventPopup').innerText = athletes[athlete].EVENT;
+  document.querySelector('.medalPopup').innerText = athletes[athlete].MEDAL;
+  document.getElementById("abc").style.display = "block";
+}
+
 
 // Affichage d'une section
 function displaySection() {
@@ -70,7 +78,9 @@ function displaySection() {
       break;
     case '#athlete':
       if (sectionSplit[1]) {
-        alert("athlete" + sectionSplit[1])
+        renderPopup(sectionSplit[1]);
+        window.location.hash = '';
+
       } else {
         alert("athletes")
       }

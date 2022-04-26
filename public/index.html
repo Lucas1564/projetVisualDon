@@ -6,6 +6,59 @@
   <title>Projet VisualDon</title>
   <link rel="shortcut icon" href="../assets/img/favicon.ico">
   <link href="../assets/css/main.css">
+  <style>
+    /*----------------------------------------------
+CSS settings for HTML div Exact Center
+------------------------------------------------*/
+    #abc {
+      width: 100%;
+      height: 100%;
+      opacity: .95;
+      top: 0;
+      left: 0;
+      display: none;
+      position: fixed;
+      background-color: #313131;
+      overflow: auto
+    }
+
+    img#close {
+      position: absolute;
+      right: -14px;
+      top: -14px;
+      cursor: pointer
+    }
+
+    div#popupContact {
+      position: absolute;
+      left: 50%;
+      top: 17%;
+      margin-left: -202px;
+      font-family: 'Raleway', sans-serif
+    }
+
+    #form {
+      max-width: 300px;
+      min-width: 250px;
+      padding: 10px 50px;
+      border: 2px solid gray;
+      border-radius: 10px;
+      font-family: raleway;
+      background-color: #fff
+    }
+
+    p {
+      margin-top: 30px
+    }
+
+    h2 {
+      background-color: #FEFFED;
+      padding: 20px 35px;
+      margin: -10px -50px;
+      text-align: center;
+      border-radius: 10px 10px 0 0
+    }
+  </style>
 </head>
 
 <body>
@@ -110,6 +163,49 @@
 
       <!------------------------------------------------------------------------------------------------------------>
 
+      <!------------------------------------------------------------------------------------------------------------>
+
+      <section id="medaille-section">
+
+        <div class="medaille-list row">
+        </div>
+
+        <template id="medaille-list-item-template">
+          <h4>Medaille de la Suisse</h4>
+          <div class="col-xs-12 col-lg-12 medaille">
+            <div class="row">
+              <div class="gold-list-item-title"></div>
+              <div class="silver-list-item-title"></div>
+              <div class="bronze-list-item-title"></div>
+            </div>
+          </div>
+        </template>
+      </section>
+
+
+      <!------------------------------------------------------------------------------------------------------------>
+
+      <!------------------------------------------------------------------------------------------------------------>
+
+      <div id="abc">
+        <!-- Popup Div Starts Here -->
+        <div id="popupContact">
+          <!-- Contact Us Form -->
+          <div id="form" name="form">
+            <img id="close" src="https://d29fhpw069ctt2.cloudfront.net/icon/image/39219/preview.png" width="25" onclick="div_hide()">
+            <h2>Athlete Suisse</h2>
+            <hr>
+            <div class="namePopup"></div>
+            <div class="sportPopup"></div>
+            <div class="eventPopup"></div>
+            <div class="medalPopup"></div>
+          </div>
+          <!-- Popup Div Ends Here -->
+        </div>
+      </div>
+
+      <!------------------------------------------------------------------------------------------------------------>
+
 
       <section id="athlete-section">
         <h4>Top 10 : Médailles par pays sur l'ensemble des Jeux Olympiques</h4>
@@ -118,6 +214,12 @@
     </div>
     <svg width="600" height="500" class="svgBarChart"></svg>
   </div>
+
+  <script>
+    function div_hide() {
+      document.getElementById("abc").style.display = "none";
+    }
+  </script>
 
 </body>
 

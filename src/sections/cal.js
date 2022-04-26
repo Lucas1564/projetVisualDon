@@ -9,12 +9,17 @@ const dateListItemTemplate = document.querySelector('#date-list-item-template')
 const eventlist = document.querySelector('.event-list')
 const eventListItemTemplate = document.querySelector('#event-list-item-template')
 
+// Les tags dont nous avons besoin pour afficher les events
+const medaillelist = document.querySelector('.medaille-list')
+const medailleListItemTemplate = document.querySelector('#medaille-list-item-template')
+
+var dateDay = "2 Feb 2022";
+
 
 
 // Affiche le jour désiré dans la liste
 function renderCal(day) {
   affichesSport();
-  var dateDay = "2 Feb 2022";
   switch (day) {
     case "1":
       dateDay = "2 Feb 2022";
@@ -237,7 +242,7 @@ function renderCal(day) {
 
     }
   }
-
+  renderMedaille()
   datlist.append(newDate)
 
 }
@@ -276,6 +281,57 @@ function afficheSport(sport) {
     sportlist.append(newSport)
   }
 
+  afficheMedaille(sport)
+
+}
+
+
+//creating a default Array constructor
+var goldArray = new Set();
+//creating a default Array constructor
+var silverArray = new Set();
+//creating a default Array constructor
+var bronzeArray = new Set();
+
+function afficheMedaille(sport) {
+  var sportName = sport;
+  var tiretSport = sport.replace("-", ' ');
+  var testSport = " " + tiretSport;
+  for (var i = 0; i < medal.length; i++) {
+    if (medal[i].SPORTS == testSport && medal[i].NOC == " Switzerland") {
+      if (medal[i].MEDAL == "Gold") {
+        goldArray.add(medal[i].NAME);
+      }
+      if (medal[i].MEDAL == "Silver") {
+        silverArray.add(medal[i].NAME);
+      }
+      if (medal[i].MEDAL == "Bronze") {
+        bronzeArray.add(medal[i].NAME);
+      }
+    }
+  }
+}
+
+function renderMedaille() {
+  const newMedaille = medailleListItemTemplate.content.cloneNode(true) // true pour cloner également les enfants du node
+  if (goldArray.size == 0 && silverArray.size == 0 && bronzeArray.size == 0) {
+    newMedaille.querySelector('h4').innerText = "Aucunes médailles suisse à la date du " + dateDay
+  } else {
+    newMedaille.querySelector('h4').innerText = "Medaille suisse du " + dateDay
+  }
+  for (var i = 0; i < goldArray.size; i++) {
+    newMedaille.querySelector('.gold-list-item-title').innerHTML += '<img alt="image" src="https://cdn-icons-png.flaticon.com/512/179/179249.png" width="50">';
+  }
+  for (var i = 0; i < silverArray.size; i++) {
+    newMedaille.querySelector('.silver-list-item-title').innerHTML += '<img alt="image" src="https://cdn-icons-png.flaticon.com/512/179/179251.png" width="50">';
+  }
+  for (var i = 0; i < bronzeArray.size; i++) {
+    newMedaille.querySelector('.bronze-list-item-title').innerHTML += '<img alt="image" src="https://cdn-icons-png.flaticon.com/512/179/179250.png" width="50">';
+  }
+  bronzeArray.clear();
+  silverArray.clear();
+  goldArray.clear();
+  medaillelist.append(newMedaille)
 }
 
 function affichesSport() {
@@ -286,6 +342,7 @@ function affichesSport() {
 function renderCalSections(day) {
   // On vide la liste
   datlist.replaceChildren()
+  medaillelist.replaceChildren()
   renderCal(day)
 }
 
