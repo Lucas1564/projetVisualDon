@@ -207,26 +207,26 @@ CSS settings for HTML div Exact Center
 
       <!------------------------------------------------------------------------------------------------------------>
 
-      
+
 
       <section id="athlete-section">
         <h4>Top 10 : Médailles par pays sur l'ensemble des Jeux Olympiques</h4>
-        <svg width="600" height="500" class="svgBarChart"></svg>
-        
-        <div id="movieDetails" class="hidden"></div>
+        <div class="row">
+          <svg width="600" height="500" class="svgBarChart col-xs-8 col-lg-8"></svg>
+
+          <div id="movieDetails" class="hidden col-xs-4 col-lg-4"></div>
+        </div>
         <template id="top10Details">
-          <img class="poster" height="300" src="">
           <div class="detailsContent">
-          <h2 class="title"></h2>
-          <h3>Description</h3>
-          <p class="description"></p>
-          <h3>Genre(s)</h3>
-          <div class="genre"></div>
-      </div>
-          <div class=".button">
-              <button id="closeDetails">Close</button>
+            <h2 class="title"></h2>
+            <div class="gold-list-item-info"></div>
+            <div class="silver-list-item-info"></div>
+            <div class="bronze-list-item-info"></div>
           </div>
-      </template>
+          <div class=".button">
+            <button id="closeDetails" onclick="hide_info()">Close</button>
+          </div>
+        </template>
 
       </section>
 
@@ -239,12 +239,16 @@ CSS settings for HTML div Exact Center
       </section>
 
     </div>
-    
+
   </div>
 
   <script>
     function div_hide() {
       document.getElementById("abc").style.display = "none";
+    }
+
+    function hide_info() {
+      document.getElementById("movieDetails").style.display = "none";
     }
   </script>
 
