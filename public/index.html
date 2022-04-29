@@ -59,6 +59,7 @@ CSS settings for HTML div Exact Center
       border-radius: 10px 10px 0 0
     }
   </style>
+  <script src="https://d3js.org/d3.v6.js"></script>
 </head>
 
 <body>
@@ -206,13 +207,39 @@ CSS settings for HTML div Exact Center
 
       <!------------------------------------------------------------------------------------------------------------>
 
+      
 
       <section id="athlete-section">
         <h4>Top 10 : Médailles par pays sur l'ensemble des Jeux Olympiques</h4>
+        <svg width="600" height="500" class="svgBarChart"></svg>
+        
+        <div id="movieDetails" class="hidden"></div>
+        <template id="top10Details">
+          <img class="poster" height="300" src="">
+          <div class="detailsContent">
+          <h2 class="title"></h2>
+          <h3>Description</h3>
+          <p class="description"></p>
+          <h3>Genre(s)</h3>
+          <div class="genre"></div>
+      </div>
+          <div class=".button">
+              <button id="closeDetails">Close</button>
+          </div>
+      </template>
+
+      </section>
+
+
+      <!------------------------------------------------------------------------------------------------------------>
+
+      <section id="athlete-section">
+        <h4>Répartition des médailles Suisses, d'après les disciplines</h4>
+        <div id="my_dataviz"></div>
       </section>
 
     </div>
-    <svg width="600" height="500" class="svgBarChart"></svg>
+    
   </div>
 
   <script>

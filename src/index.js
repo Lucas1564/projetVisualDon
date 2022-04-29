@@ -14,6 +14,9 @@ console.log(agenda);
 // Les tags dont nous avons besoin pour afficher les athletes
 const athleteList = document.querySelector('.athlete-list')
 const athleteListItemTemplate = document.querySelector('#athlete-list-item-template')
+const templateTop10Details= document.getElementById('top10Details')
+const movieDetail = document.getElementById('movieDetails')
+
 
 
 
@@ -99,7 +102,73 @@ window.addEventListener('hashchange', displaySection)
 displaySection()
 
 
-// ---------------------- Top 10 medals --------------------------------------
+// ---------------------- Pie chart --------------------------------------
+
+// set the dimensions and margins of the graph
+const widthPie = 450,
+    heightPie = 450,
+    marginPie = 40;
+
+// The radius of the pieplot is half the width or half the height (smallest one). I subtract a bit of margin.
+const radius = Math.min(widthPie, heightPie) / 2 - marginPie
+
+// append the svg object to the div called 'my_dataviz'
+const svgPie = d3.select("#my_dataviz")
+  .append("svg")
+    .attr("width", widthPie)
+    .attr("height", heightPie)
+  .append("g")
+    .attr("transform", `translate(${widthPie / 2}, ${heightPie / 2})`);
+
+// Create dummy data
+const data = {a: 9, b: 4, c:1}
+//
+//Change data
+//
+
+// set the color scale
+const color = d3.scaleOrdinal()
+  .range(d3.schemeSet2);
+
+// Compute the position of each group on the pie:
+const pie = d3.pie()
+  .value(function(d) {return d[1]})
+const data_ready = pie(Object.entries(data))
+// Now I know that group A goes from 0 degrees to x degrees and so on.
+
+// shape helper to build arcs:
+const arcGenerator = d3.arc()
+  .innerRadius(0)
+  .outerRadius(radius)
+
+// Build the pie chart: Basically, each part of the pie is a path that we build using the arc function.
+svgPie
+  .selectAll('mySlices')
+  .data(data_ready)
+  .join('path')
+    .attr('d', arcGenerator)
+    .attr('fill', function(d){ return(color(d.data[0])) })
+    .attr("stroke", "black")
+    .style("stroke-width", "2px")
+    .style("opacity", 0.7)
+
+// Now add the annotation. Use the centroid method to get the best coordinates
+svgPie
+  .selectAll('mySlices')
+  .data(data_ready)
+  .join('text')
+  .text(function(d){ return "Discipline " + d.data[0]})
+  //
+//Change text
+//
+  .attr("transform", function(d) { return `translate(${arcGenerator.centroid(d)})`})
+  .style("text-anchor", "middle")
+  .style("font-size", 17)
+
+
+
+
+  // ---------------------- Top 10 medals --------------------------------------
 
 const WIDTH = 800
 const HEIGHT = 800
@@ -164,3 +233,53 @@ g.selectAll(".bar")
   .attr("height", function(d) {
     return height - yScale(d);
   });
+            .attr("transform", "translate(" + 100 + "," + 100 + ")");
+
+    
+        xScale.domain(tabPays);
+        yScale.domain([0, (d3.max(tabNbMedaillesPays)+3)]);
+
+        g.append("g")
+         .attr("transform", "translate(0," + height + ")")
+         .call(d3.axisBottom(xScale).tickFormat(function(d){
+           return d;
+         })
+         );
+
+        g.append("g")
+         .call(d3.axisLeft(yScale).tickFormat(function(d){
+             return d;
+         }).ticks(4));
+
+
+       g.selectAll(".bar")
+         .data(tabNbMedaillesPays)
+         .enter().append("rect")
+         .attr("class", "bar")
+         .attr("x", function(d,i) { return xScale(tabPays[i]); })
+         .attr("y", function(d) { return yScale(d); })
+         .attr("width", xScale.bandwidth())
+         .attr("height", function(d) { return height - yScale(d); })
+         
+         .on("click", function(event,d){
+          console.log(d);
+          alert("clicked "+ d);
+          renderTop10DetailsPerCountry(d);
+        });
+
+
+function renderTop10DetailsPerCountry(data) {
+  alert("renderTop10Olympics " + data);
+  const newMovieDetail = templateTop10Details.content.cloneNode(true);
+  newMovieDetail.querySelector('h2').textContent = "Salut";
+  movieDetail.replaceChildren(newMovieDetail);
+  movieDetail.classList.remove('hidden');
+
+  //console.log(data);
+  //console.log(data.length);
+
+}
+
+
+
+         
