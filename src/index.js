@@ -232,8 +232,9 @@ g.selectAll(".bar")
   .attr("width", xScale.bandwidth())
   .attr("height", function(d) {
     return height - yScale(d);
-  });
-            .attr("transform", "translate(" + 100 + "," + 100 + ")");
+  })
+  .attr("transform", "translate(" + 100 + "," + 100 + ")");
+  
 
     
         xScale.domain(tabPays);
