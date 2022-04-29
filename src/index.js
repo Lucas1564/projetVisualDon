@@ -27,7 +27,8 @@ for (var i = 0; i < athletes.length; i++) {
     // On modifie le lien pour lui mettre un href du style "#artists-id"
     newAthlete.querySelector('a').href = '#athlete-' + i
     // On set la bonne image
-    newAthlete.querySelector('img').src = "https://upload.wikimedia.org/wikipedia/fr/thumb/a/ab/Logo_JP_d%27hiver_-_P%C3%A9kin_2022.svg/1200px-Logo_JP_d%27hiver_-_P%C3%A9kin_2022.svg.png"
+    newAthlete.querySelector('img').src = "img/athletes/"+athletes[i].NAME.split(' ')[0]+".png"
+    //alert(athletes[i].NAME.split(' ')[0]);
     newAthlete.querySelector('.athlete-list-item-title').innerText = athlete.NAME
     athleteList.append(newAthlete)
   }

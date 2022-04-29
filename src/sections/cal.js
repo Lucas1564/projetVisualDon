@@ -272,8 +272,38 @@ function afficheSport(sport) {
     for (var i = 0; i < medal.length; i++) {
       if (medal[i].SPORTS == testSport && medal[i].EVENT == eventName) {
         var paragraph = newSport.querySelector('.medal-list-item-title');
-        var text = document.createTextNode(medal[i].NAME + "--------------------------" + medal[i].NOC + "--------------------------" + medal[i].MEDAL + "\n");
+        var imgFlag = document.createElement('img');
+        var imgMedal = document.createElement('img');
+        
+        if (medal[i].MEDAL == "Gold") {
+          imgMedal.src = "https://cdn-icons-png.flaticon.com/512/179/179249.png";
+        }else if(medal[i].MEDAL == "Silver"){
+          imgMedal.src = "https://cdn-icons-png.flaticon.com/512/179/179251.png";
+        }else if(medal[i].MEDAL == "Bronze"){
+          imgMedal.src = "https://cdn-icons-png.flaticon.com/512/179/179250.png";
+        }
+        imgMedal.className = "imgMedal";
+
+        if (medal[i].NOC == " ROC") {
+          imgFlag.src = "https://countryflagsapi.com/png/ru";
+        }else if(medal[i].NOC == " Republic of Korea"){
+          imgFlag.src = "https://countryflagsapi.com/png/kr";
+        }else if(medal[i].NOC == " People's Republic of China"){
+          imgFlag.src = "https://countryflagsapi.com/png/cn";
+        }else if(medal[i].NOC == " Czech Republic"){
+          imgFlag.src = "https://countryflagsapi.com/png/cz";
+        }
+        else{
+          imgFlag.src = "https://countryflagsapi.com/png/" + medal[i].NOC.trim();
+        }
+        imgFlag.className = "imgFlag";
+
+        var text = document.createTextNode(" " + medal[i].NAME + "\n");
+
+        paragraph.appendChild(imgMedal);
+        paragraph.appendChild(imgFlag);
         paragraph.appendChild(text);
+
 
       }
     }
