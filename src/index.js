@@ -233,40 +233,40 @@ g.selectAll(".bar")
   .attr("height", function(d) {
     return height - yScale(d);
   })
-  .attr("transform", "translate(" + 100 + "," + 100 + ")");
+  .on("click", function(event,d){
+    console.log(d);
+    alert("clicked "+ d);
+    renderTop10DetailsPerCountry(d);
+  });
+  //.attr("transform", "translate(" + 100 + "," + 100 + ")");
   
 
     
-        xScale.domain(tabPays);
-        yScale.domain([0, (d3.max(tabNbMedaillesPays)+3)]);
+  xScale.domain(tabPays);
+  yScale.domain([0, (d3.max(tabNbMedaillesPays)+3)]);
 
-        g.append("g")
-         .attr("transform", "translate(0," + height + ")")
-         .call(d3.axisBottom(xScale).tickFormat(function(d){
-           return d;
-         })
-         );
+  g.append("g")
+   .attr("transform", "translate(0," + height + ")")
+   .call(d3.axisBottom(xScale).tickFormat(function(d){
+     return d;
+   })
+   );
 
-        g.append("g")
-         .call(d3.axisLeft(yScale).tickFormat(function(d){
-             return d;
-         }).ticks(4));
+  g.append("g")
+   .call(d3.axisLeft(yScale).tickFormat(function(d){
+       return d;
+   }).ticks(4));
 
 
-       g.selectAll(".bar")
-         .data(tabNbMedaillesPays)
-         .enter().append("rect")
-         .attr("class", "bar")
-         .attr("x", function(d,i) { return xScale(tabPays[i]); })
-         .attr("y", function(d) { return yScale(d); })
-         .attr("width", xScale.bandwidth())
-         .attr("height", function(d) { return height - yScale(d); })
-         
-         .on("click", function(event,d){
-          console.log(d);
-          alert("clicked "+ d);
-          renderTop10DetailsPerCountry(d);
-        });
+  g.selectAll(".bar")
+    .data(tabNbMedaillesPays)
+    .enter().append("rect")
+    .attr("class", "bar")
+    .attr("x", function(d,i) { return xScale(tabPays[i]); })
+    .attr("y", function(d) { return yScale(d); })
+    .attr("width", xScale.bandwidth())
+    .attr("height", function(d) { return height - yScale(d); })
+    ;
 
 
 function renderTop10DetailsPerCountry(data) {
