@@ -69,6 +69,17 @@ CSS settings for HTML div Exact Center
       margin:5px;
       border:1px solid lightgrey;
     }
+
+    .imgSport{
+      width:40px;
+      margin:10px;
+    }
+
+    .imgSportName{
+      width:80px!important;
+      margin:5px!important;
+    }
+
   </style>
   <script src="https://d3js.org/d3.v6.js"></script>
 </head>
@@ -157,8 +168,9 @@ CSS settings for HTML div Exact Center
           </div>
         </template>
         <template id="sport-list-item-template">
+          <img class="imgSportName"></img>
           <h4 class="sportName"></h4>
-          <h4 class="eventName"></h4>
+          <h5 class="eventName"></h5>
           <div class="col-xs-6 col-lg-6 event">
             <div class="row">
               <h4></h4>
@@ -225,7 +237,7 @@ CSS settings for HTML div Exact Center
         <div class="row">
           <svg width="600" height="500" class="svgBarChart col-xs-8 col-lg-8"></svg>
 
-          <div id="movieDetails" class="hidden col-xs-4 col-lg-4"></div>
+          <div id="toggleTop10Details" class="hidden col-xs-4 col-lg-4"></div>
         </div>
         <template id="top10Details">
           <div class="detailsContent">
@@ -259,7 +271,7 @@ CSS settings for HTML div Exact Center
     }
 
     function hide_info() {
-      document.getElementById("movieDetails").style.display = "none";
+      document.getElementById("toggleTop10Details").style.display = "none";
     }
   </script>
 

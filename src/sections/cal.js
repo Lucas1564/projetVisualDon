@@ -84,159 +84,274 @@ function renderCal(day) {
   const newDate = dateListItemTemplate.content.cloneNode(true) // true pour cloner également les enfants du node
   newDate.querySelector('h4').innerText = dateDay;
 
-  var dayNumber = parseInt(day) + 1;
+  var dayNumber = parseInt(day) + 1;  
 
   for (var i = 0; i < agenda.length; i++) {
     switch (dayNumber) {
       case 2:
         if (agenda[i].day2 !== '-') {
           var paragraph = newDate.querySelector('.event-list-item-title');
-          var text = document.createTextNode(agenda[i].Ceremonies + "\n");
-          paragraph.appendChild(text);
-          afficheSport(agenda[i].Ceremonies);
+          if (agenda[i].Ceremonies !="Ceremonies"){
+            var text = document.createTextNode(agenda[i].Ceremonies + "\n");
+            var imgSport = document.createElement('img');
+            imgSport.className = "imgSport";
+            imgSport.src="img/sports/"+agenda[i].Ceremonies+".png";
+            paragraph.appendChild(imgSport)
+            paragraph.appendChild(text);
+            afficheSport(agenda[i].Ceremonies);
+          } 
         }
         break;
       case 3:
         if (agenda[i].day3 !== '-') {
           var paragraph = newDate.querySelector('.event-list-item-title');
-          var text = document.createTextNode(agenda[i].Ceremonies + "\n");
-          paragraph.appendChild(text);
-          afficheSport(agenda[i].Ceremonies);
+          if (agenda[i].Ceremonies !="Ceremonies"){
+            var text = document.createTextNode(agenda[i].Ceremonies + "\n");
+            var imgSport = document.createElement('img');
+            imgSport.className = "imgSport";
+            imgSport.src="img/sports/"+agenda[i].Ceremonies+".png";
+            paragraph.appendChild(imgSport)
+            paragraph.appendChild(text);
+            afficheSport(agenda[i].Ceremonies);
+          } 
         }
         break;
       case 4:
         if (agenda[i].day4 !== '-') {
           var paragraph = newDate.querySelector('.event-list-item-title');
-          var text = document.createTextNode(agenda[i].Ceremonies + "\n");
-          paragraph.appendChild(text);
-          afficheSport(agenda[i].Ceremonies);
+          if (agenda[i].Ceremonies !="Ceremonies"){
+            var text = document.createTextNode(agenda[i].Ceremonies + "\n");
+            var imgSport = document.createElement('img');
+            imgSport.className = "imgSport";
+            imgSport.src="img/sports/"+agenda[i].Ceremonies+".png";
+            paragraph.appendChild(imgSport)
+            paragraph.appendChild(text);
+            afficheSport(agenda[i].Ceremonies);
+          } 
         }
         break;
       case 5:
         if (agenda[i].day5 !== '-') {
           var paragraph = newDate.querySelector('.event-list-item-title');
-          var text = document.createTextNode(agenda[i].Ceremonies + "\n");
-          paragraph.appendChild(text);
-          afficheSport(agenda[i].Ceremonies);
+          if (agenda[i].Ceremonies !="Ceremonies"){
+            var text = document.createTextNode(agenda[i].Ceremonies + "\n");
+            var imgSport = document.createElement('img');
+            imgSport.className = "imgSport";
+            imgSport.src="img/sports/"+agenda[i].Ceremonies+".png";
+            paragraph.appendChild(imgSport)
+            paragraph.appendChild(text);
+            afficheSport(agenda[i].Ceremonies);
+          } 
         }
         break;
       case 6:
         if (agenda[i].day6 !== '-') {
           var paragraph = newDate.querySelector('.event-list-item-title');
-          var text = document.createTextNode(agenda[i].Ceremonies + "\n");
-          paragraph.appendChild(text);
-          afficheSport(agenda[i].Ceremonies);
+          if (agenda[i].Ceremonies !="Ceremonies"){
+            var text = document.createTextNode(agenda[i].Ceremonies + "\n");
+            var imgSport = document.createElement('img');
+            imgSport.className = "imgSport";
+            imgSport.src="img/sports/"+agenda[i].Ceremonies+".png";
+            paragraph.appendChild(imgSport)
+            paragraph.appendChild(text);
+            afficheSport(agenda[i].Ceremonies);
+          } 
         }
         break;
       case 7:
         if (agenda[i].day7 !== '-') {
           var paragraph = newDate.querySelector('.event-list-item-title');
-          var text = document.createTextNode(agenda[i].Ceremonies + "\n");
-          paragraph.appendChild(text);
-          afficheSport(agenda[i].Ceremonies);
+          if (agenda[i].Ceremonies !="Ceremonies"){
+            var text = document.createTextNode(agenda[i].Ceremonies + "\n");
+            var imgSport = document.createElement('img');
+            imgSport.className = "imgSport";
+            imgSport.src="img/sports/"+agenda[i].Ceremonies+".png";
+            paragraph.appendChild(imgSport)
+            paragraph.appendChild(text);
+            afficheSport(agenda[i].Ceremonies);
+          } 
         }
         break;
       case 8:
         if (agenda[i].day8 !== '-') {
           var paragraph = newDate.querySelector('.event-list-item-title');
-          var text = document.createTextNode(agenda[i].Ceremonies + "\n");
-          paragraph.appendChild(text);
-          afficheSport(agenda[i].Ceremonies);
+          if (agenda[i].Ceremonies !="Ceremonies"){
+            var text = document.createTextNode(agenda[i].Ceremonies + "\n");
+            var imgSport = document.createElement('img');
+            imgSport.className = "imgSport";
+            imgSport.src="img/sports/"+agenda[i].Ceremonies+".png";
+            paragraph.appendChild(imgSport)
+            paragraph.appendChild(text);
+            afficheSport(agenda[i].Ceremonies);
+          } 
         }
         break;
       case 9:
         if (agenda[i].day9 !== '-') {
           var paragraph = newDate.querySelector('.event-list-item-title');
-          var text = document.createTextNode(agenda[i].Ceremonies + "\n");
-          paragraph.appendChild(text);
-          afficheSport(agenda[i].Ceremonies);
+          if (agenda[i].Ceremonies !="Ceremonies"){
+            var text = document.createTextNode(agenda[i].Ceremonies + "\n");
+            var imgSport = document.createElement('img');
+            imgSport.className = "imgSport";
+            imgSport.src="img/sports/"+agenda[i].Ceremonies+".png";
+            paragraph.appendChild(imgSport)
+            paragraph.appendChild(text);
+            afficheSport(agenda[i].Ceremonies);
+          } 
         }
         break;
       case 10:
         if (agenda[i].day10 !== '-') {
           var paragraph = newDate.querySelector('.event-list-item-title');
-          var text = document.createTextNode(agenda[i].Ceremonies + "\n");
-          paragraph.appendChild(text);
+          if (agenda[i].Ceremonies !="Ceremonies"){
+            var text = document.createTextNode(agenda[i].Ceremonies + "\n");
+            var imgSport = document.createElement('img');
+            imgSport.className = "imgSport";
+            imgSport.src="img/sports/"+agenda[i].Ceremonies+".png";
+            paragraph.appendChild(imgSport)
+            paragraph.appendChild(text);
+            afficheSport(agenda[i].Ceremonies);
+          } 
         }
         break;
       case 11:
         if (agenda[i].day11 !== '-') {
           var paragraph = newDate.querySelector('.event-list-item-title');
-          var text = document.createTextNode(agenda[i].Ceremonies + "\n");
-          paragraph.appendChild(text);
-          afficheSport(agenda[i].Ceremonies);
+          if (agenda[i].Ceremonies !="Ceremonies"){
+            var text = document.createTextNode(agenda[i].Ceremonies + "\n");
+            var imgSport = document.createElement('img');
+            imgSport.className = "imgSport";
+            imgSport.src="img/sports/"+agenda[i].Ceremonies+".png";
+            paragraph.appendChild(imgSport)
+            paragraph.appendChild(text);
+            afficheSport(agenda[i].Ceremonies);
+          } 
         }
         break;
       case 12:
         if (agenda[i].day12 !== '-') {
           var paragraph = newDate.querySelector('.event-list-item-title');
-          var text = document.createTextNode(agenda[i].Ceremonies + "\n");
-          paragraph.appendChild(text);
-          afficheSport(agenda[i].Ceremonies);
+          if (agenda[i].Ceremonies !="Ceremonies"){
+            var text = document.createTextNode(agenda[i].Ceremonies + "\n");
+            var imgSport = document.createElement('img');
+            imgSport.className = "imgSport";
+            imgSport.src="img/sports/"+agenda[i].Ceremonies+".png";
+            paragraph.appendChild(imgSport)
+            paragraph.appendChild(text);
+            afficheSport(agenda[i].Ceremonies);
+          } 
         }
         break;
       case 13:
         if (agenda[i].day13 !== '-') {
           var paragraph = newDate.querySelector('.event-list-item-title');
-          var text = document.createTextNode(agenda[i].Ceremonies + "\n");
-          paragraph.appendChild(text);
-          afficheSport(agenda[i].Ceremonies);
+          if (agenda[i].Ceremonies !="Ceremonies"){
+            var text = document.createTextNode(agenda[i].Ceremonies + "\n");
+            var imgSport = document.createElement('img');
+            imgSport.className = "imgSport";
+            imgSport.src="img/sports/"+agenda[i].Ceremonies+".png";
+            paragraph.appendChild(imgSport)
+            paragraph.appendChild(text);
+            afficheSport(agenda[i].Ceremonies);
+          } 
         }
         break;
       case 14:
         if (agenda[i].day14 !== '-') {
           var paragraph = newDate.querySelector('.event-list-item-title');
-          var text = document.createTextNode(agenda[i].Ceremonies + "\n");
-          paragraph.appendChild(text);
-          afficheSport(agenda[i].Ceremonies);
+          if (agenda[i].Ceremonies !="Ceremonies"){
+            var text = document.createTextNode(agenda[i].Ceremonies + "\n");
+            var imgSport = document.createElement('img');
+            imgSport.className = "imgSport";
+            imgSport.src="img/sports/"+agenda[i].Ceremonies+".png";
+            paragraph.appendChild(imgSport)
+            paragraph.appendChild(text);
+            afficheSport(agenda[i].Ceremonies);
+          } 
         }
         break;
       case 18:
         if (agenda[i].day18 !== '-') {
           var paragraph = newDate.querySelector('.event-list-item-title');
-          var text = document.createTextNode(agenda[i].Ceremonies + "\n");
-          paragraph.appendChild(text);
-          afficheSport(agenda[i].Ceremonies);
+          if (agenda[i].Ceremonies !="Ceremonies"){
+            var text = document.createTextNode(agenda[i].Ceremonies + "\n");
+            var imgSport = document.createElement('img');
+            imgSport.className = "imgSport";
+            imgSport.src="img/sports/"+agenda[i].Ceremonies+".png";
+            paragraph.appendChild(imgSport)
+            paragraph.appendChild(text);
+            afficheSport(agenda[i].Ceremonies);
+          } 
         }
         break;
       case 15:
         if (agenda[i].day15 !== '-') {
           var paragraph = newDate.querySelector('.event-list-item-title');
-          var text = document.createTextNode(agenda[i].Ceremonies + "\n");
-          paragraph.appendChild(text);
-          afficheSport(agenda[i].Ceremonies);
+          if (agenda[i].Ceremonies !="Ceremonies"){
+            var text = document.createTextNode(agenda[i].Ceremonies + "\n");
+            var imgSport = document.createElement('img');
+            imgSport.className = "imgSport";
+            imgSport.src="img/sports/"+agenda[i].Ceremonies+".png";
+            paragraph.appendChild(imgSport)
+            paragraph.appendChild(text);
+            afficheSport(agenda[i].Ceremonies);
+          } 
         }
         break;
       case 16:
         if (agenda[i].day16 !== '-') {
           var paragraph = newDate.querySelector('.event-list-item-title');
-          var text = document.createTextNode(agenda[i].Ceremonies + "\n");
-          paragraph.appendChild(text);
-          afficheSport(agenda[i].Ceremonies);
+          if (agenda[i].Ceremonies !="Ceremonies"){
+            var text = document.createTextNode(agenda[i].Ceremonies + "\n");
+            var imgSport = document.createElement('img');
+            imgSport.className = "imgSport";
+            imgSport.src="img/sports/"+agenda[i].Ceremonies+".png";
+            paragraph.appendChild(imgSport)
+            paragraph.appendChild(text);
+            afficheSport(agenda[i].Ceremonies);
+          } 
         }
         break;
       case 17:
         if (agenda[i].day17 !== '-') {
           var paragraph = newDate.querySelector('.event-list-item-title');
-          var text = document.createTextNode(agenda[i].Ceremonies + "\n");
-          paragraph.appendChild(text);
-          afficheSport(agenda[i].Ceremonies);
+          if (agenda[i].Ceremonies !="Ceremonies"){
+            var text = document.createTextNode(agenda[i].Ceremonies + "\n");
+            var imgSport = document.createElement('img');
+            imgSport.className = "imgSport";
+            imgSport.src="img/sports/"+agenda[i].Ceremonies+".png";
+            paragraph.appendChild(imgSport)
+            paragraph.appendChild(text);
+            afficheSport(agenda[i].Ceremonies);
+          } 
         }
         break;
       case 19:
         if (agenda[i].day19 !== '-') {
           var paragraph = newDate.querySelector('.event-list-item-title');
-          var text = document.createTextNode(agenda[i].Ceremonies + "\n");
-          paragraph.appendChild(text);
-          afficheSport(agenda[i].Ceremonies);
+          if (agenda[i].Ceremonies !="Ceremonies"){
+            var text = document.createTextNode(agenda[i].Ceremonies + "\n");
+            var imgSport = document.createElement('img');
+            imgSport.className = "imgSport";
+            imgSport.src="img/sports/"+agenda[i].Ceremonies+".png";
+            paragraph.appendChild(imgSport)
+            paragraph.appendChild(text);
+            afficheSport(agenda[i].Ceremonies);
+          } 
         }
         break;
       case 20:
         if (agenda[i].day20 !== '-') {
           var paragraph = newDate.querySelector('.event-list-item-title');
-          var text = document.createTextNode(agenda[i].Ceremonies + "\n");
-          paragraph.appendChild(text);
-          afficheSport(agenda[i].Ceremonies);
+          if (agenda[i].Ceremonies !="Ceremonies"){
+            var text = document.createTextNode(agenda[i].Ceremonies + "\n");
+            var imgSport = document.createElement('img');
+            imgSport.className = "imgSport";
+            imgSport.src="img/sports/"+agenda[i].Ceremonies+".png";
+            paragraph.appendChild(imgSport)
+            paragraph.appendChild(text);
+            afficheSport(agenda[i].Ceremonies);
+          } 
         }
         break;
 
@@ -266,6 +381,10 @@ function afficheSport(sport) {
     const sportlist = document.querySelector('.sport-list')
     const sportListItemTemplate = document.querySelector('#sport-list-item-template')
     const newSport = sportListItemTemplate.content.cloneNode(true) // true pour cloner également les enfants du node
+    var imgSport = document.createElement('img');
+    //imgSport.src="img/sports/"+sportName+".png";
+    imgSport.className = "imgSport";
+    newSport.querySelector('.imgSportName').src="img/sports/"+sportName+".png";
     newSport.querySelector('.sportName').innerText = sportName;
     newSport.querySelector('.eventName').innerText = eventName;
 

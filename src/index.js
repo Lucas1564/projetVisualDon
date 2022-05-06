@@ -15,7 +15,7 @@ console.log(agenda);
 const athleteList = document.querySelector('.athlete-list')
 const athleteListItemTemplate = document.querySelector('#athlete-list-item-template')
 const templateTop10Details = document.getElementById('top10Details')
-const movieDetail = document.getElementById('movieDetails')
+const toggleTop10Details = document.getElementById('toggleTop10Details')
 
 
 
@@ -168,17 +168,24 @@ svgPie
   .attr('fill', function(d) {
     return (color(d.data[0]))
   })
+  .attr("data-discipline-name", function(d, i) {
+    return data_ready[i].data[0];
+  })
   .attr("stroke", "black")
   .style("stroke-width", "2px")
   .style("opacity", 0.7)
-
+  .on("click", function(event, d) {
+    var nameDiscipline = event.target.getAttribute("data-discipline-name");
+    //alert(nameDiscipline);
+    renderPieChartDetails(nameDiscipline, d);
+  });
 // Now add the annotation. Use the centroid method to get the best coordinates
 svgPie
   .selectAll('mySlices')
   .data(data_ready)
   .join('text')
   .text(function(d) {
-    return "Discipline " + d.data[0]
+    return d.data[0]
   })
   //
   //Change text
@@ -186,9 +193,20 @@ svgPie
   .attr("transform", function(d) {
     return `translate(${arcGenerator.centroid(d)})`
   })
+  .attr("data-discipline-name", function(d, i) {
+    return data_ready[i].data[0];
+  })
   .style("text-anchor", "middle")
   .style("font-size", 17)
+  .on("click", function(event, d) {
+    var nameDiscipline = event.target.getAttribute("data-discipline-name");
+    //alert(nameDiscipline);
+    renderPieChartDetails(nameDiscipline, d);
+  });
 
+  function renderPieChartDetails(name, medal) {
+    alert(name);
+  }
 
 
 
@@ -310,14 +328,14 @@ function renderTop10DetailsPerCountry(name, medal) {
       bronze = pays[i].Bronze;
     }
   }
-  document.getElementById("movieDetails").style.display = "block";
-  const newMovieDetail = templateTop10Details.content.cloneNode(true);
-  newMovieDetail.querySelector('h2').textContent = name;
-  newMovieDetail.querySelector('.gold-list-item-info').innerHTML += '<img alt="image" src="https://cdn-icons-png.flaticon.com/512/179/179249.png" width="50"> <span>' + gold + '</span>';
-  newMovieDetail.querySelector('.silver-list-item-info').innerHTML += '<img alt="image" src="https://cdn-icons-png.flaticon.com/512/179/179251.png" width="50"><span>' + silver + '</span>';
-  newMovieDetail.querySelector('.bronze-list-item-info').innerHTML += '<img alt="image" src="https://cdn-icons-png.flaticon.com/512/179/179250.png" width="50"><span>' + bronze + '</span>';
-  movieDetail.replaceChildren(newMovieDetail);
-  movieDetail.classList.remove('hidden');
+  document.getElementById("toggleTop10Details").style.display = "block";
+  const newToggleTop10Details = templateTop10Details.content.cloneNode(true);
+  newToggleTop10Details.querySelector('h2').textContent = name;
+  newToggleTop10Details.querySelector('.gold-list-item-info').innerHTML += '<img alt="image" src="https://cdn-icons-png.flaticon.com/512/179/179249.png" width="50"> <span>' + gold + '</span>';
+  newToggleTop10Details.querySelector('.silver-list-item-info').innerHTML += '<img alt="image" src="https://cdn-icons-png.flaticon.com/512/179/179251.png" width="50"><span>' + silver + '</span>';
+  newToggleTop10Details.querySelector('.bronze-list-item-info').innerHTML += '<img alt="image" src="https://cdn-icons-png.flaticon.com/512/179/179250.png" width="50"><span>' + bronze + '</span>';
+  toggleTop10Details.replaceChildren(newToggleTop10Details);
+  toggleTop10Details.classList.remove('hidden');
 
   //console.log(data);
   //console.log(data.length);
