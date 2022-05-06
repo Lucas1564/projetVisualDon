@@ -27,7 +27,7 @@ for (var i = 0; i < athletes.length; i++) {
     // On modifie le lien pour lui mettre un href du style "#artists-id"
     newAthlete.querySelector('a').href = '#athlete-' + i
     // On set la bonne image
-    newAthlete.querySelector('img').src = "img/athletes/"+athletes[i].NAME.split(' ')[0]+".png"
+    newAthlete.querySelector('img').src = "img/athletes/" + athletes[i].NAME.split(' ')[0] + ".png"
     //alert(athletes[i].NAME.split(' ')[0]);
     newAthlete.querySelector('.athlete-list-item-title').innerText = athlete.NAME
     athleteList.append(newAthlete)
@@ -122,14 +122,25 @@ const svgPie = d3.select("#my_dataviz")
   .attr("transform", `translate(${widthPie / 2}, ${heightPie / 2})`);
 
 // Create dummy data
-const data = {
-  a: 9,
-  b: 4,
-  c: 1
+var sportArray = new Set();
+for (var i = 0; i < athletes.length; i++) {
+  if (athletes[i].NOC == " Switzerland") {
+    sportArray.add(athletes[i].SPORTS);
+  }
 }
-//
-//Change data
-//
+var data = {};
+for (let sportName of sportArray) {
+  var counter = 0;
+  for (var i = 0; i < athletes.length; i++) {
+    if (athletes[i].NOC == " Switzerland") {
+      if (athletes[i].SPORTS == sportName) {
+        counter++;
+      }
+    }
+  }
+  data[sportName] = counter;
+}
+
 
 // set the color scale
 const color = d3.scaleOrdinal()
