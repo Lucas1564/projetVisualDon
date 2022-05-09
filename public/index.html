@@ -13,12 +13,12 @@ CSS settings for HTML div Exact Center
     #abc {
       width: 100%;
       height: 100%;
-      opacity: .95;
       top: 0;
       left: 0;
       display: none;
       position: fixed;
-      background-color: #313131;
+      background-color: rgba(0, 0, 0, 0.6);
+      ;
       overflow: auto;
       z-index: 99;
     }
@@ -404,13 +404,13 @@ CSS settings for HTML div Exact Center
       filter: grayscale(0);
       transform: scale(1.05) rotate(1deg);
     }
-    
+
     .logo {
       width: 100px;
       margin: 10px 30px 10px 20px;
     }
 
-    .nav-item{
+    .nav-item {
       margin: 0px 30px 0px 30px;
     }
 
@@ -426,9 +426,7 @@ CSS settings for HTML div Exact Center
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <img class="logo"
-     src="/img/logoJo.png"
-     alt="Logo des Jeux Olympiques de Pékin en 2022">
+    <img class="logo" src="/img/logoJo.png" alt="Logo des Jeux Olympiques de Pékin en 2022">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -693,9 +691,9 @@ CSS settings for HTML div Exact Center
   </div>
 
   <!-- Back to top button -->
-<button type="button" class="btn btn-danger btn-floating btn-lg" id="btn-back-to-top">
-  <i class="fas fa-arrow-up">↑</i>
-</button>
+  <button type="button" class="btn btn-danger btn-floating btn-lg" id="btn-back-to-top">
+    <i class="fas fa-arrow-up">↑</i>
+  </button>
 
 
   <script>
@@ -711,18 +709,18 @@ CSS settings for HTML div Exact Center
     let mybutton = document.getElementById("btn-back-to-top");
 
     // When the user scrolls down 20px from the top of the document, show the button
-    window.onscroll = function () {
+    window.onscroll = function() {
       scrollFunction();
     };
 
     function scrollFunction() {
       if (
-      document.body.scrollTop > 20 ||
-      document.documentElement.scrollTop > 20
+        document.body.scrollTop > 20 ||
+        document.documentElement.scrollTop > 20
       ) {
-      mybutton.style.display = "block";
+        mybutton.style.display = "block";
       } else {
-      mybutton.style.display = "none";
+        mybutton.style.display = "none";
       }
     }
     // When the user clicks on the button, scroll to the top of the document
