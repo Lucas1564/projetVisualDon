@@ -38,20 +38,15 @@ for (var i = 0; i < pays.length; i++) {
   console.log(pays[i].NOC + " " + pays[i].Gold)
 }
 
-// Les tags dont nous avons besoin pour afficher le calendrier
-const calist = document.querySelector('.cal-list')
-const calListItemTemplate = document.querySelector('#cal-list-item-template')
-
 for (var i = 0; i < agenda.length; i++) {
   var cal = (Object.keys(agenda[i]).length) - 2;
 }
 for (var j = 1; j < cal; j++) {
-  var day = "Day " + j;
-  const newCal = calListItemTemplate.content.cloneNode(true) // true pour cloner également les enfants du node
+  var day = "Day" + j;
+  var jour = j + 1;
   // On modifie le lien pour lui mettre un href du style "#cal-id"
-  newCal.querySelector('a').href = '#calendrier-' + j
-  newCal.querySelector('.cal-list-item-title').innerText = day
-  calist.append(newCal)
+  document.querySelector("." + day).href = '#calendrier-' + j
+  document.querySelector("." + day).innerText = jour
 }
 
 
@@ -76,6 +71,13 @@ function displaySection() {
     case '#calendrier':
       if (sectionSplit[1]) {
         renderCalSection(sectionSplit[1]);
+        const currents = document.querySelectorAll('.events');
+
+        currents.forEach(current => {
+          // ✅ Remove class from each element
+          current.classList.remove('current-day');
+        });
+        document.querySelector(".day" + sectionSplit[1]).classList.add("current-day")
       } else {
         alert("Calendrier")
       }

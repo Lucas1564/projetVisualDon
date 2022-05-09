@@ -165,6 +165,93 @@ CSS settings for HTML div Exact Center
         opacity: 1;
       }
     }
+
+    /* ---------- CALENDAR ---------- */
+
+    .calendar {
+      text-align: center;
+    }
+
+    .calendar header {
+      position: relative;
+    }
+
+    .calendar h2 {
+      text-transform: uppercase;
+    }
+
+    .calendar thead {
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .calendar tbody,
+    .calendar tbody a {
+      color: #7c8a95;
+      text-decoration: none;
+    }
+
+    .calendar tbody td:hover {
+      border: 2px solid #00addf;
+    }
+
+    .calendar td {
+      border: 2px solid transparent;
+      border-radius: 50%;
+      display: inline-block;
+      height: 4em;
+      line-height: 4em;
+      text-align: center;
+      width: 4em;
+    }
+
+    .calendar td {
+      border: 2px solid transparent;
+      border-radius: 50%;
+      display: inline-block;
+      height: 4em;
+      line-height: 4em;
+      text-align: center;
+      width: 4em;
+    }
+
+    .calendar .prev-month,
+    .calendar .next-month {
+      color: #cbd1d2;
+    }
+
+    .calendar .prev-month:hover,
+    .calendar .next-month:hover {
+      border: 2px solid #cbd1d2;
+    }
+
+    .current-day,
+    .current-day a {
+      background: #00addf;
+      color: #fff !important;
+    }
+
+    .events {
+      cursor: pointer;
+      position: relative;
+    }
+
+    .events:after {
+      background: #00addf;
+      border-radius: 50%;
+      bottom: .5em;
+      display: block;
+      content: '';
+      height: .5em;
+      left: 50%;
+      margin: -.25em 0 0 -.25em;
+      position: absolute;
+      width: .5em;
+    }
+
+    .events.current-day:after {
+      background: #f9f9f9;
+    }
   </style>
   <script src="https://d3js.org/d3.v6.js"></script>
 </head>
@@ -199,19 +286,75 @@ CSS settings for HTML div Exact Center
       <section id="calendrier-section">
         <h4>Calendrier</h4>
 
-        <div class="cal-list row">
-        </div>
 
-        <template id="cal-list-item-template">
-          <div class="col-xs-1 col-lg-1 athlete">
-            <div class="row">
-              <a href="#">
-                <div class="cal-list-item-title"></div>
-              </a>
-            </div>
-          </div>
-        </template>
+        <div class="calendar">
+          <header>
+            <h2>February</h2>
+          </header>
+          <table>
+            <thead>
+              <tr>
+                <td>Mo</td>
+                <td>Tu</td>
+                <td>We</td>
+                <td>Th</td>
+                <td>Fr</td>
+                <td>Sa</td>
+                <td>Su</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="prev-month">31</td>
+                <td>1</td>
+                <td class="current-day events day1"><a href="" class="Day1"></a></td>
+                <td class="events day2"><a href="" class="Day2"></a></td>
+                <td class="events day3"><a href="" class="Day3"></a></td>
+                <td class="events day4"><a href="" class="Day4"></a></td>
+                <td class="events day5"><a href="" class="Day5"></a></td>
+              </tr>
+              <tr>
+                <td class="events day6"><a href="" class="Day6"></a></td>
+                <td class="events day7"><a href="" class="Day7"></a></td>
+                <td class="events day8"><a href="" class="Day8"></a></td>
+                <td class="events day9"><a href="" class="Day9"></a></td>
+                <td class="events day10"><a href="" class="Day10"></a></td>
+                <td class="events day11"><a href="" class="Day11"></a></td>
+                <td class="events day12"><a href="" class="Day12"></a></td>
+              </tr>
+              <tr>
+                <td class="events day13"><a href="" class="Day13"></a></td>
+                <td class="events day14"><a href="" class="Day14"></a></td>
+                <td class="events day15"><a href="" class="Day15"></a></td>
+                <td class="events day16"><a href="" class="Day16"></a></td>
+                <td class="events day17"><a href="" class="Day17"></a></td>
+                <td class="events day18"><a href="" class="Day18"></a></td>
+                <td>20</td>
+              </tr>
+              <tr>
+                <td>21</td>
+                <td>22</td>
+                <td>23</td>
+                <td>24</td>
+                <td>25</td>
+                <td>26</td>
+                <td>27</td>
+              </tr>
+
+              <tr>
+                <td>28</td>
+                <td class="next-month">1</td>
+                <td class="next-month">2</td>
+                <td class="next-month">3</td>
+                <td class="next-month">4</td>
+                <td class="next-month">5</td>
+                <td class="next-month">6</td>
+              </tr>
+            </tbody>
+          </table>
+        </div> <!-- end calendar -->
       </section>
+
 
 
       <!------------------------------------------------------------------------------------------------------------>
@@ -224,12 +367,12 @@ CSS settings for HTML div Exact Center
 
         <template id="date-list-item-template">
           <h4></h4>
-          <div class="col-xs-8 col-lg-8 event scroll-element js-scroll slide-left">
+          <div class="col-xs-8 col-lg-8 event">
             <div class="row">
               <h4>Sport</h4>
             </div>
           </div>
-          <div class="col-xs-4 col-lg-4 event scroll-element js-scroll slide-right">
+          <div class="col-xs-4 col-lg-4 event">
             <div class="row">
               <div class="event-list-item-title"></div>
             </div>
