@@ -79,6 +79,7 @@ function displaySection() {
       } else {
         alert("Calendrier")
       }
+      scroll()
       break;
     case '#athlete':
       if (sectionSplit[1]) {
@@ -88,10 +89,12 @@ function displaySection() {
       } else {
         alert("athletes")
       }
+      scroll()
       break;
     case '#home':
       renderCalSection(1);
       //alert("Home")
+      scroll()
       break;
   }
 }
@@ -105,21 +108,115 @@ displaySection()
 
 // ---------------------- Pie chart --------------------------------------
 
-// set the dimensions and margins of the graph
-const widthPie = 450,
-  heightPie = 450,
-  marginPie = 40;
+function graphSport(sportNom) {
+  var gold = 0;
+  var silver = 0;
+  var bronze = 0;
+  var nrbMedal = 0;
+  for (var i = 0; i < athletes.length; i++) {
+    if (athletes[i].NOC == " Switzerland") {
+      if (athletes[i].SPORTS == sportNom) {
+        if (athletes[i].MEDAL == "Gold") {
+          gold++;
+        } else if (athletes[i].MEDAL == "Silver") {
+          silver++;
+        } else if (athletes[i].MEDAL == "Bronze") {
+          bronze++;
+        }
+        nrbMedal++;
+      }
+    }
+  }
+  data = {
+    gold: gold,
+    silver: silver,
+    bronze: bronze,
+  }
+  console.log(data);
 
-// The radius of the pieplot is half the width or half the height (smallest one). I subtract a bit of margin.
-const radius = Math.min(widthPie, heightPie) / 2 - marginPie
+  if (nrbMedal == 1) {
+    nrbMedal = 2
+  }
+  // set the dimensions and margins of the graph
+  const widthPie = 80 * nrbMedal,
+    heightPie = 80 * nrbMedal,
+    marginPie = 20;
 
-// append the svg object to the div called 'my_dataviz'
-const svgPie = d3.select("#my_dataviz")
-  .append("svg")
-  .attr("width", widthPie)
-  .attr("height", heightPie)
-  .append("g")
-  .attr("transform", `translate(${widthPie / 2}, ${heightPie / 2})`);
+  // The radius of the pieplot is half the width or half the height (smallest one). I subtract a bit of margin.
+  const radius = 30 * nrbMedal
+
+  // append the svg object to the div called 'my_dataviz'
+  const svgPie = d3.select("#my_dataviz")
+    .append("svg")
+    .attr("width", widthPie)
+    .attr("height", heightPie)
+    .append("g")
+    .attr("transform", `translate(${widthPie / 2}, ${heightPie / 2})`);
+
+  // set the color scale
+  const color = d3.scaleOrdinal([`#FFD700`, `#C0C0C0`, `#CD7F32`]);
+
+  // Compute the position of each group on the pie:
+  const pie = d3.pie()
+    .value(function(d) {
+      return d[1]
+    })
+  const data_ready = pie(Object.entries(data))
+  // Now I know that group A goes from 0 degrees to x degrees and so on.
+
+  // shape helper to build arcs:
+  const arcGenerator = d3.arc()
+    .innerRadius(0)
+    .outerRadius(radius)
+
+  // Build the pie chart: Basically, each part of the pie is a path that we build using the arc function.
+  svgPie
+    .selectAll('mySlices')
+    .data(data_ready)
+    .join('path')
+    .attr('d', arcGenerator)
+    .attr('fill', function(d) {
+      return (color(d.data[0]))
+    })
+    .attr("stroke", "black")
+    .style("stroke-width", "2px")
+    .style("opacity", 0.7)
+  var spaceSport = sportNom.replace(" ", '');
+  var tiretSport = spaceSport.replace(" ", '-');
+  svgPie.append('image')
+    .attr('xlink:href', 'img/sports/' + tiretSport + '.png')
+    .attr('width', 10 * nrbMedal)
+    .attr('height', 10 * nrbMedal)
+    .attr("x", -10 * nrbMedal / 2)
+    .attr("y", -10 * nrbMedal / 2)
+
+  // Now add the annotation. Use the centroid method to get the best coordinates
+  svgPie
+    .selectAll('mySlices')
+    .data(data_ready)
+    .join('text')
+    .html(function(d) {
+      if (d.data[1] != 0) {
+        if (d.data[0] == "gold") {
+          return '<img src="https://cdn-icons-png.flaticon.com/512/179/179249.png" width="50px">' + d.data[1]
+        } else if (d.data[0] == "silver") {
+          return '<img src="https://cdn-icons-png.flaticon.com/512/179/179251.png" width="50px">' + d.data[1]
+        } else if (d.data[0] == "bronze") {
+          return '<img src="https://cdn-icons-png.flaticon.com/512/179/179250.png" width="50px">' + d.data[1]
+        }
+      }
+    })
+    //
+    //Change text
+    //
+    .attr("transform", function(d) {
+      return `translate(${arcGenerator.centroid(d)})`
+    })
+    .style("text-anchor", "middle")
+    .style("font-size", 17)
+
+
+}
 
 // Create dummy data
 var sportArray = new Set();
@@ -130,84 +227,8 @@ for (var i = 0; i < athletes.length; i++) {
 }
 var data = {};
 for (let sportName of sportArray) {
-  var counter = 0;
-  for (var i = 0; i < athletes.length; i++) {
-    if (athletes[i].NOC == " Switzerland") {
-      if (athletes[i].SPORTS == sportName) {
-        counter++;
-      }
-    }
-  }
-  data[sportName] = counter;
+  graphSport(sportName);
 }
-
-
-// set the color scale
-const color = d3.scaleOrdinal()
-  .range(d3.schemeSet2);
-
-// Compute the position of each group on the pie:
-const pie = d3.pie()
-  .value(function(d) {
-    return d[1]
-  })
-const data_ready = pie(Object.entries(data))
-// Now I know that group A goes from 0 degrees to x degrees and so on.
-
-// shape helper to build arcs:
-const arcGenerator = d3.arc()
-  .innerRadius(0)
-  .outerRadius(radius)
-
-// Build the pie chart: Basically, each part of the pie is a path that we build using the arc function.
-svgPie
-  .selectAll('mySlices')
-  .data(data_ready)
-  .join('path')
-  .attr('d', arcGenerator)
-  .attr('fill', function(d) {
-    return (color(d.data[0]))
-  })
-  .attr("data-discipline-name", function(d, i) {
-    return data_ready[i].data[0];
-  })
-  .attr("stroke", "black")
-  .style("stroke-width", "2px")
-  .style("opacity", 0.7)
-  .on("click", function(event, d) {
-    var nameDiscipline = event.target.getAttribute("data-discipline-name");
-    //alert(nameDiscipline);
-    renderPieChartDetails(nameDiscipline, d);
-  });
-// Now add the annotation. Use the centroid method to get the best coordinates
-svgPie
-  .selectAll('mySlices')
-  .data(data_ready)
-  .join('text')
-  .text(function(d) {
-    return d.data[0]
-  })
-  //
-  //Change text
-  //
-  .attr("transform", function(d) {
-    return `translate(${arcGenerator.centroid(d)})`
-  })
-  .attr("data-discipline-name", function(d, i) {
-    return data_ready[i].data[0];
-  })
-  .style("text-anchor", "middle")
-  .style("font-size", 17)
-  .on("click", function(event, d) {
-    var nameDiscipline = event.target.getAttribute("data-discipline-name");
-    //alert(nameDiscipline);
-    renderPieChartDetails(nameDiscipline, d);
-  });
-
-  function renderPieChartDetails(name, medal) {
-    alert(name);
-  }
-
 
 
 // ---------------------- Top 10 medals --------------------------------------
@@ -340,4 +361,47 @@ function renderTop10DetailsPerCountry(name, medal) {
   //console.log(data);
   //console.log(data.length);
 
+}
+
+function scroll() {
+  const scrollElements = document.querySelectorAll(".js-scroll");
+
+  const elementInView = (el, dividend = 1) => {
+    const elementTop = el.getBoundingClientRect().top;
+
+    return (
+      elementTop <=
+      (window.innerHeight || document.documentElement.clientHeight) / dividend
+    );
+  };
+
+  const elementOutofView = (el) => {
+    const elementTop = el.getBoundingClientRect().top;
+
+    return (
+      elementTop > (window.innerHeight || document.documentElement.clientHeight)
+    );
+  };
+
+  const displayScrollElement = (element) => {
+    element.classList.add("scrolled");
+  };
+
+  const hideScrollElement = (element) => {
+    element.classList.remove("scrolled");
+  };
+
+  const handleScrollAnimation = () => {
+    scrollElements.forEach((el) => {
+      if (elementInView(el, 1.25)) {
+        displayScrollElement(el);
+      } else if (elementOutofView(el)) {
+        hideScrollElement(el)
+      }
+    })
+  }
+
+  window.addEventListener("scroll", () => {
+    handleScrollAnimation();
+  });
 }
