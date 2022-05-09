@@ -19,7 +19,8 @@ CSS settings for HTML div Exact Center
       display: none;
       position: fixed;
       background-color: #313131;
-      overflow: auto
+      overflow: auto;
+      z-index: 99;
     }
 
     img#close {
@@ -256,6 +257,150 @@ CSS settings for HTML div Exact Center
     table {
       width: 100%;
     }
+
+    section {
+      margin-top: 50px !important;
+    }
+
+    /* Utilities */
+    .auto-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill,
+          minmax(var(--auto-grid-min-size, 14rem), 1fr));
+      grid-gap: var(--auto-grid-gap, 0);
+      padding: 0;
+      list-style-type: none;
+    }
+
+    .flow>*+* {
+      margin-top: var(--flow-space, 1em);
+    }
+
+    /* Composition */
+    .team {
+      --flow-space: 2em;
+    }
+
+    /* Blocks */
+    .profile {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      aspect-ratio: 1/1;
+      position: relative;
+      padding: 1.5rem;
+      color: #ffffff;
+      backface-visibility: hidden;
+      text-decoration: none;
+      overflow: hidden;
+    }
+
+    .profile::before,
+    .profile::after {
+      content: "";
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      /*inset: 0;*/
+      top: 0;
+      left: 0;
+    }
+
+    .profile::before {
+      background: linear-gradient(to top,
+          hsl(0 0% 0% / 0.79) 0%,
+          hsl(0 0% 0% / 0.787) 7.8%,
+          hsl(0 0% 0% / 0.779) 14.4%,
+          hsl(0 0% 0% / 0.765) 20.2%,
+          hsl(0 0% 0% / 0.744) 25.3%,
+          hsl(0 0% 0% / 0.717) 29.9%,
+          hsl(0 0% 0% / 0.683) 34.3%,
+          hsl(0 0% 0% / 0.641) 38.7%,
+          hsl(0 0% 0% / 0.592) 43.3%,
+          hsl(0 0% 0% / 0.534) 48.4%,
+          hsl(0 0% 0% / 0.468) 54.1%,
+          hsl(0 0% 0% / 0.393) 60.6%,
+          hsl(0 0% 0% / 0.31) 68.3%,
+          hsl(0 0% 0% / 0.216) 77.3%,
+          hsl(0 0% 0% / 0.113) 87.7%,
+          hsl(0 0% 0% / 0) 100%);
+      transition: 300ms opacity linear;
+    }
+
+    .profile::after {
+      background: linear-gradient(45deg,
+          hsl(5 97% 63% / 0.7) 0,
+          hsl(5 97% 63% / 0) 100%);
+      opacity: 0;
+      transition: 300ms opacity linear;
+    }
+
+
+    .profile img {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      margin: 0;
+      z-index: -1;
+      object-fit: cover;
+      filter: grayscale(1);
+      transition: filter 200ms ease, transform 250ms linear;
+    }
+
+    .profile h2,
+    .profile p {
+      transform: translateY(2ex);
+    }
+
+    .profile h2 {
+      font-size: 1rem;
+      line-height: 1.2;
+      font-weight: 900;
+      letter-spacing: 0.03ch;
+      transition: 300ms transform ease;
+      color: #222;
+    }
+
+    .profile p {
+      font-size: 1.2rem;
+      font-weight: 500;
+    }
+
+    .profile p {
+      opacity: 0;
+      transition: 300ms opacity linear, 300ms transform ease-in-out;
+    }
+
+    .profile:focus {
+      outline: 0.5rem solid white;
+      outline-offset: -0.5rem;
+    }
+
+    .profile:hover :is(h2, p),
+    .profile:focus :is(h2, p) {
+      transform: none;
+    }
+
+    .profile:hover::after,
+    .profile:focus::after,
+    .profile:hover::before,
+    .profile:focus::before {
+      opacity: 0.7;
+    }
+
+    .profile:hover p,
+    .profile:focus p {
+      opacity: 1;
+      transition-delay: 200ms;
+    }
+
+    .profile:hover img,
+    .profile:focus img {
+      filter: grayscale(0);
+      transform: scale(1.05) rotate(1deg);
+    }
   </style>
   <script src="https://d3js.org/d3.v6.js"></script>
 </head>
@@ -269,20 +414,24 @@ CSS settings for HTML div Exact Center
       <section id="athlete-section">
         <h4>Athletes Suisses ayant gagné une médaille</h4>
 
-        <div class="athlete-list row">
+        <div class="row">
+          <div class="team">
+            <ul class="auto-grid athlete-list" role="list">
+            </ul>
+          </div>
         </div>
 
         <template id="athlete-list-item-template">
-          <div class="col-xs-3 col-lg-3 athlete">
-            <div class="row">
-              <a href="#">
-                <img src="" width="100" height="100" />
-                <div class="athlete-list-item-title"></div>
-              </a>
-            </div>
-          </div>
+          <li>
+            <a href="https://swop.link/cool" class="profile">
+              <h2 class="profile__name athlete-list-item-title">Anita Simmons</h2>
+              <img alt="Anita Simmons" src="https://source.unsplash.com/BhcutpohYwg/800x800" />
+            </a>
+          </li>
         </template>
       </section>
+
+
 
 
       <!------------------------------------------------------------------------------------------------------------>
