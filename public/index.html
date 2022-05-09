@@ -39,8 +39,8 @@ CSS settings for HTML div Exact Center
     }
 
     #form {
-      max-width: 300px;
-      min-width: 250px;
+      max-width: 500px;
+      min-width: 350px;
       padding: 10px 50px;
       border: 2px solid gray;
       border-radius: 10px;
@@ -53,11 +53,12 @@ CSS settings for HTML div Exact Center
     }
 
     h2 {
-      background-color: #FEFFED;
+      background-color: #DA291C;
+      color:#ffffff;
       padding: 20px 35px;
-      margin: -10px -50px;
       text-align: center;
-      border-radius: 10px 10px 0 0
+      border-radius: 10px 10px 0 0;
+      margin-bottom: 30px
     }
 
     .imgMedal {
@@ -171,6 +172,7 @@ CSS settings for HTML div Exact Center
 
     .calendar {
       text-align: center;
+      margin-top: 30px;
     }
 
     .calendar header {
@@ -193,7 +195,7 @@ CSS settings for HTML div Exact Center
     }
 
     .calendar tbody td:hover {
-      border: 2px solid #00addf;
+      border: 2px solid #DA291C;
     }
 
     .calendar td {
@@ -228,7 +230,7 @@ CSS settings for HTML div Exact Center
 
     .current-day,
     .current-day a {
-      background: #00addf;
+      background: #DA291C;
       color: #fff !important;
     }
 
@@ -238,7 +240,7 @@ CSS settings for HTML div Exact Center
     }
 
     .events:after {
-      background: #00addf;
+      background: #DA291C;
       border-radius: 50%;
       bottom: .5em;
       display: block;
@@ -363,7 +365,7 @@ CSS settings for HTML div Exact Center
       font-weight: 900;
       letter-spacing: 0.03ch;
       transition: 300ms transform ease;
-      color: #222;
+      color: #ffffff;
     }
 
     .profile p {
@@ -404,14 +406,43 @@ CSS settings for HTML div Exact Center
       filter: grayscale(0);
       transform: scale(1.05) rotate(1deg);
     }
-    
+
+    /* ---------- TOP10DETAILs ---------- */
+
+    #top10Details{
+      margin-top: 300px;
+    }
+
+    .detailsContent{
+      background-color: #f9f9f9;
+      margin-top: 150px;
+    }
+
+    .bodyDetailsContent{
+      padding:15px 35px 15px 15px;
+    }
+
+    .gold-list-item-info, .silver-list-item-info, .bronze-list-item-info, .imgPaysTop10{
+      margin : 30px;
+    }
+
+    .gold-list-item-info img, .silver-list-item-info img, .bronze-list-item-info img, .imgPaysTop10 img{
+      margin-right : 20px;
+    }
+
+    /* ---------- HEADER ---------- */
     .logo {
       width: 100px;
-      margin: 10px 30px 10px 20px;
+      margin: 20px 40px 20px 40px;
     }
 
     .nav-item{
       margin: 0px 30px 0px 30px;
+    }
+
+     /* ---------- OTHERS ---------- */
+     .event-list-item-title{
+      font-size: 1.5rem;
     }
 
     #btn-back-to-top {
@@ -419,7 +450,10 @@ CSS settings for HTML div Exact Center
       bottom: 20px;
       right: 20px;
       display: none;
+      background-color: #DA291C;
     }
+
+
   </style>
   <script src="https://d3js.org/d3.v6.js"></script>
 </head>
@@ -455,7 +489,7 @@ CSS settings for HTML div Exact Center
       <!------------------------------------------------------------------------------------------------------------>
 
       <section id="athlete-section">
-        <h1 id="menuAthletes">Athletes Suisses ayant gagné une médaille</h1>
+        <h2 id="menuAthletes">Toutes les médailles gagnées par des athlètes suisses</h2>
 
         <div class="row">
           <div class="team">
@@ -480,12 +514,12 @@ CSS settings for HTML div Exact Center
       <!------------------------------------------------------------------------------------------------------------>
 
       <section id="calendrier-section">
-        <h1 id="menuCalendrier">Calendrier</h1>
+        <h2 id="menuCalendrier">Calendrier</h2>
 
 
         <div class="calendar">
           <header>
-            <h2>February</h2>
+            <h3>February</h3>
           </header>
           <table>
             <thead>
@@ -562,10 +596,10 @@ CSS settings for HTML div Exact Center
         </div>
 
         <template id="date-list-item-template">
-          <h4></h4>
+          <h2></h2>
           <div class="col-xs-8 col-lg-8 event">
             <div class="row">
-              <h4>Sport</h4>
+              <h3>Sports et disciplines du jour : </h3>
             </div>
           </div>
           <div class="col-xs-4 col-lg-4 event">
@@ -644,7 +678,7 @@ CSS settings for HTML div Exact Center
           <!-- Contact Us Form -->
           <div id="form" name="form">
             <img id="close" src="https://d29fhpw069ctt2.cloudfront.net/icon/image/39219/preview.png" width="25" onclick="div_hide()">
-            <h2>Athlete Suisse</h2>
+            <h2>Médaille suisse par : </h2>
             <hr>
             <div class="namePopup"></div>
             <div class="sportPopup"></div>
@@ -660,7 +694,7 @@ CSS settings for HTML div Exact Center
 
 
       <section id="athlete-section">
-        <h1 id="menuClassement">Classement par pays sur l'ensemble des Jeux Olympiques</h1>
+        <h2 id="menuClassement">Classement par pays sur l'ensemble des Jeux Olympiques</h2>
         <div class="row scroll-element js-scroll fade-in-bottom">
           <svg width="600" height="500" class="svgBarChart col-xs-8 col-lg-8"></svg>
 
@@ -668,13 +702,18 @@ CSS settings for HTML div Exact Center
         </div>
         <template id="top10Details">
           <div class="detailsContent">
-            <h2 class="title"></h2>
-            <div class="gold-list-item-info"></div>
-            <div class="silver-list-item-info"></div>
-            <div class="bronze-list-item-info"></div>
+            <h2 class="titleTop10"></h2>
+            <div class="bodyDetailsContent">
+              <div class="enteteTop10Details"></div>
+              <div class="imgPaysTop10"></div>
+              <div class="gold-list-item-info"></div>
+              <div class="silver-list-item-info"></div>
+              <div class="bronze-list-item-info"></div>
+            </div>
+            
           </div>
           <div class=".button">
-            <button id="closeDetails" onclick="hide_info()">Close</button>
+            <button id="closeDetails" onclick="hide_info()">Fermer</button>
           </div>
         </template>
 
@@ -684,7 +723,7 @@ CSS settings for HTML div Exact Center
       <!------------------------------------------------------------------------------------------------------------>
 
       <section id="athlete-section">
-        <h1 id="menuDisciplines">Répartition des médailles Suisses, d'après les disciplines</h1>
+        <h2 id="menuDisciplines">Répartition des médailles Suisses, d'après les disciplines</h2>
         <div id="my_dataviz" class="scroll-element js-scroll fade-in-bottom"></div>
       </section>
 

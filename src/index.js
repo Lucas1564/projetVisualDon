@@ -51,10 +51,10 @@ for (var j = 1; j < cal; j++) {
 
 
 function renderPopup(athlete) {
-  document.querySelector('.namePopup').innerText = athletes[athlete].NAME;
-  document.querySelector('.sportPopup').innerText = athletes[athlete].SPORTS;
-  document.querySelector('.eventPopup').innerText = athletes[athlete].EVENT;
-  document.querySelector('.medalPopup').innerText = athletes[athlete].MEDAL;
+  document.querySelector('.namePopup').innerText = "Nom, prénom : "+athletes[athlete].NAME;
+  document.querySelector('.sportPopup').innerText = "Sport : "+athletes[athlete].SPORTS;
+  document.querySelector('.eventPopup').innerText = "Discipline : "+athletes[athlete].EVENT;
+  document.querySelector('.medalPopup').innerText = "Médaille : "+athletes[athlete].MEDAL;
   document.getElementById("abc").style.display = "block";
 }
 
@@ -344,6 +344,10 @@ function renderTop10DetailsPerCountry(name, medal) {
   var gold;
   var silver;
   var bronze;
+  var nameSpecialFlag = name;
+  if(name == "ROC"){
+    nameSpecialFlag = "ru";
+  }
   for (var i = 0; i < pays.length; i++) {
     if (pays[i].NOC == name) {
       gold = pays[i].Gold;
@@ -354,9 +358,11 @@ function renderTop10DetailsPerCountry(name, medal) {
   document.getElementById("toggleTop10Details").style.display = "block";
   const newToggleTop10Details = templateTop10Details.content.cloneNode(true);
   newToggleTop10Details.querySelector('h2').textContent = name;
-  newToggleTop10Details.querySelector('.gold-list-item-info').innerHTML += '<img alt="image" src="https://cdn-icons-png.flaticon.com/512/179/179249.png" width="50"> <span>' + gold + '</span>';
-  newToggleTop10Details.querySelector('.silver-list-item-info').innerHTML += '<img alt="image" src="https://cdn-icons-png.flaticon.com/512/179/179251.png" width="50"><span>' + silver + '</span>';
-  newToggleTop10Details.querySelector('.bronze-list-item-info').innerHTML += '<img alt="image" src="https://cdn-icons-png.flaticon.com/512/179/179250.png" width="50"><span>' + bronze + '</span>';
+  newToggleTop10Details.querySelector('.enteteTop10Details').textContent = "Voici la répartition des médailles pour : ";
+  newToggleTop10Details.querySelector('.imgPaysTop10').innerHTML += '<img alt="image" src="https://countryflagsapi.com/png/'+nameSpecialFlag+'" width="50"> <span>' + name + '</span>';
+  newToggleTop10Details.querySelector('.gold-list-item-info').innerHTML += '<img alt="image" src="https://cdn-icons-png.flaticon.com/512/179/179249.png" width="50"> <span>' + gold + ' médailles d\'or</span>';
+  newToggleTop10Details.querySelector('.silver-list-item-info').innerHTML += '<img alt="image" src="https://cdn-icons-png.flaticon.com/512/179/179251.png" width="50"><span>' + silver + ' médailles d\'argent</span>';
+  newToggleTop10Details.querySelector('.bronze-list-item-info').innerHTML += '<img alt="image" src="https://cdn-icons-png.flaticon.com/512/179/179250.png" width="50"><span>' + bronze + ' médailles de bronze</span>';
   toggleTop10Details.replaceChildren(newToggleTop10Details);
   toggleTop10Details.classList.remove('hidden');
 

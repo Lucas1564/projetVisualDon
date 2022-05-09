@@ -15,8 +15,6 @@ const medailleListItemTemplate = document.querySelector('#medaille-list-item-tem
 
 var dateDay = "2 Feb 2022";
 
-
-
 // Affiche le jour désiré dans la liste
 function renderCal(day) {
   affichesSport();
@@ -82,7 +80,7 @@ function renderCal(day) {
   }
 
   const newDate = dateListItemTemplate.content.cloneNode(true) // true pour cloner également les enfants du node
-  newDate.querySelector('h4').innerText = dateDay;
+  newDate.querySelector('h2').innerText = "Voici les événements pour la date : " +dateDay;
 
   var dayNumber = parseInt(day) + 1;  
 
@@ -464,7 +462,7 @@ function afficheMedaille(sport) {
 function renderMedaille() {
   const newMedaille = medailleListItemTemplate.content.cloneNode(true) // true pour cloner également les enfants du node
   if (goldArray.size == 0 && silverArray.size == 0 && bronzeArray.size == 0) {
-    newMedaille.querySelector('h4').innerText = "Aucunes médailles suisse à la date du " + dateDay
+    newMedaille.querySelector('h4').innerText = "Aucune médaille suisse à la date du " + dateDay
   } else {
     newMedaille.querySelector('h4').innerText = "Medaille suisse du " + dateDay
   }
