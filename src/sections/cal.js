@@ -462,9 +462,9 @@ function afficheMedaille(sport) {
 function renderMedaille() {
   const newMedaille = medailleListItemTemplate.content.cloneNode(true) // true pour cloner également les enfants du node
   if (goldArray.size == 0 && silverArray.size == 0 && bronzeArray.size == 0) {
-    newMedaille.querySelector('h4').innerText = "Aucune médaille suisse à la date du " + dateDay
+    newMedaille.querySelector('h2').innerText = "Aucune médaille suisse à la date du " + dateDay
   } else {
-    newMedaille.querySelector('h4').innerText = "Medaille suisse du " + dateDay
+    newMedaille.querySelector('h2').innerText = "Médailles suisses du " + dateDay
   }
   for (var i = 0; i < goldArray.size; i++) {
     newMedaille.querySelector('.gold-list-item-title').innerHTML += '<img alt="image" src="https://cdn-icons-png.flaticon.com/512/179/179249.png" width="50">';
