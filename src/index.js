@@ -16,6 +16,9 @@ const athleteList = document.querySelector('.athlete-list')
 const athleteListItemTemplate = document.querySelector('#athlete-list-item-template')
 const templateTop10Details = document.getElementById('top10Details')
 const toggleTop10Details = document.getElementById('toggleTop10Details')
+//creating a default Array constructor
+const athleteArray = new Set();
+
 
 
 
@@ -23,16 +26,25 @@ const toggleTop10Details = document.getElementById('toggleTop10Details')
 for (var i = 0; i < athletes.length; i++) {
   var athlete = athletes[i];
   if (athletes[i].NOC == " Switzerland") {
-    const newAthlete = athleteListItemTemplate.content.cloneNode(true) // true pour cloner également les enfants du node
-    // On modifie le lien pour lui mettre un href du style "#artists-id"
-    newAthlete.querySelector('a').href = '#athlete-' + i
-    // On set la bonne image
-    newAthlete.querySelector('img').src = "img/athletes/" + athletes[i].NAME.split(' ')[0] + ".png"
-    //alert(athletes[i].NAME.split(' ')[0]);
-    newAthlete.querySelector('.athlete-list-item-title').innerText = athlete.NAME
-    athleteList.append(newAthlete)
+    athleteArray.add(athletes[i].NAME);
   }
 }
+for (let athleteName of athleteArray) {
+  for (var i = 0; i < athletes.length; i++) {
+    if (athletes[i].NAME == athleteName) {
+      const newAthlete = athleteListItemTemplate.content.cloneNode(true) // true pour cloner également les enfants du node
+      // On modifie le lien pour lui mettre un href du style "#artists-id"
+      newAthlete.querySelector('a').href = '#athlete-' + i
+      // On set la bonne image
+      newAthlete.querySelector('img').src = "img/athletes/" + athletes[i].NAME.split(' ')[0] + ".png"
+      //alert(athletes[i].NAME.split(' ')[0]);
+      newAthlete.querySelector('.athlete-list-item-title').innerText = athleteName
+      athleteList.append(newAthlete)
+      break;
+    }
+  }
+}
+console.log(athleteArray)
 
 for (var i = 0; i < pays.length; i++) {
   console.log(pays[i].NOC + " " + pays[i].Gold)
@@ -51,6 +63,8 @@ for (var j = 1; j < cal; j++) {
 
 
 function renderPopup(athlete) {
+  document.querySelector('.medalPopup').innerHTML = "";
+  document.querySelector('.eventPopup').innerHTML = "";
   document.querySelector('.namePopup').innerText = athletes[athlete].NAME;
   document.querySelector('.namePopup2').innerText = athletes[athlete].NAME;
   document.querySelector('.imgPopup').src = "img/athletes/" + athletes[athlete].NAME.split(' ')[0] + ".png"
@@ -61,16 +75,21 @@ function renderPopup(athlete) {
   var tiretSport = spaceSport.replace(" ", '-');
   imgSport.src = "img/sports/" + tiretSport + ".png";
   document.querySelector('.sportPopup').appendChild(imgSport)
-  document.querySelector('.eventPopup').innerText = athletes[athlete].EVENT;
-  var html;
-  if (athletes[athlete].MEDAL == "Gold") {
-    html = '<img src="https://cdn-icons-png.flaticon.com/512/179/179249.png" width="50px">'
-  } else if (athletes[athlete].MEDAL == "Silver") {
-    html = '<img src="https://cdn-icons-png.flaticon.com/512/179/179251.png" width="50px">'
-  } else if (athletes[athlete].MEDAL == "Bronze") {
-    html = '<img src="https://cdn-icons-png.flaticon.com/512/179/179250.png" width="50px">'
+  for (var i = 0; i < athletes.length; i++) {
+    if (athletes[i].NAME == athletes[athlete].NAME) {
+      document.querySelector('.eventPopup').innerHTML += "<p>" + athletes[i].EVENT + "</p>";
+      var html;
+      if (athletes[i].MEDAL == "Gold") {
+        html = '<img title="' + athletes[i].EVENT + '" src="https://cdn-icons-png.flaticon.com/512/179/179249.png" width="50px">'
+      } else if (athletes[i].MEDAL == "Silver") {
+        html = '<img title="' + athletes[i].EVENT + '" src="https://cdn-icons-png.flaticon.com/512/179/179251.png" width="50px">'
+      } else if (athletes[i].MEDAL == "Bronze") {
+        html = '<img title="' + athletes[i].EVENT + '" src="https://cdn-icons-png.flaticon.com/512/179/179250.png" width="50px">'
+      }
+      document.querySelector('.medalPopup').innerHTML += html;
+    }
   }
-  document.querySelector('.medalPopup').innerHTML = html;
+
   document.getElementById("abc").style.display = "block";
 }
 
