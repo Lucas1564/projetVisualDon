@@ -51,10 +51,26 @@ for (var j = 1; j < cal; j++) {
 
 
 function renderPopup(athlete) {
-  document.querySelector('.namePopup').innerText = "Nom, prénom : "+athletes[athlete].NAME;
-  document.querySelector('.sportPopup').innerText = "Sport : "+athletes[athlete].SPORTS;
-  document.querySelector('.eventPopup').innerText = "Discipline : "+athletes[athlete].EVENT;
-  document.querySelector('.medalPopup').innerText = "Médaille : "+athletes[athlete].MEDAL;
+  document.querySelector('.namePopup').innerText = athletes[athlete].NAME;
+  document.querySelector('.namePopup2').innerText = athletes[athlete].NAME;
+  document.querySelector('.imgPopup').src = "img/athletes/" + athletes[athlete].NAME.split(' ')[0] + ".png"
+  document.querySelector('.sportPopup').innerText = athletes[athlete].SPORTS;
+  var imgSport = document.createElement('img');
+  imgSport.className = "imgSport";
+  var spaceSport = athletes[athlete].SPORTS.replace(" ", '');
+  var tiretSport = spaceSport.replace(" ", '-');
+  imgSport.src = "img/sports/" + tiretSport + ".png";
+  document.querySelector('.sportPopup').appendChild(imgSport)
+  document.querySelector('.eventPopup').innerText = athletes[athlete].EVENT;
+  var html;
+  if (athletes[athlete].MEDAL == "Gold") {
+    html = '<img src="https://cdn-icons-png.flaticon.com/512/179/179249.png" width="50px">'
+  } else if (athletes[athlete].MEDAL == "Silver") {
+    html = '<img src="https://cdn-icons-png.flaticon.com/512/179/179251.png" width="50px">'
+  } else if (athletes[athlete].MEDAL == "Bronze") {
+    html = '<img src="https://cdn-icons-png.flaticon.com/512/179/179250.png" width="50px">'
+  }
+  document.querySelector('.medalPopup').innerHTML = html;
   document.getElementById("abc").style.display = "block";
 }
 
@@ -345,7 +361,7 @@ function renderTop10DetailsPerCountry(name, medal) {
   var silver;
   var bronze;
   var nameSpecialFlag = name;
-  if(name == "ROC"){
+  if (name == "ROC") {
     nameSpecialFlag = "ru";
   }
   for (var i = 0; i < pays.length; i++) {
@@ -359,7 +375,7 @@ function renderTop10DetailsPerCountry(name, medal) {
   const newToggleTop10Details = templateTop10Details.content.cloneNode(true);
   newToggleTop10Details.querySelector('h2').textContent = name;
   newToggleTop10Details.querySelector('.enteteTop10Details').textContent = "Voici la répartition des médailles pour : ";
-  newToggleTop10Details.querySelector('.imgPaysTop10').innerHTML += '<img alt="image" src="https://countryflagsapi.com/png/'+nameSpecialFlag+'" width="50"> <span>' + name + '</span>';
+  newToggleTop10Details.querySelector('.imgPaysTop10').innerHTML += '<img alt="image" src="https://countryflagsapi.com/png/' + nameSpecialFlag + '" width="50"> <span>' + name + '</span>';
   newToggleTop10Details.querySelector('.gold-list-item-info').innerHTML += '<img alt="image" src="https://cdn-icons-png.flaticon.com/512/179/179249.png" width="50"> <span>' + gold + ' médailles d\'or</span>';
   newToggleTop10Details.querySelector('.silver-list-item-info').innerHTML += '<img alt="image" src="https://cdn-icons-png.flaticon.com/512/179/179251.png" width="50"><span>' + silver + ' médailles d\'argent</span>';
   newToggleTop10Details.querySelector('.bronze-list-item-info').innerHTML += '<img alt="image" src="https://cdn-icons-png.flaticon.com/512/179/179250.png" width="50"><span>' + bronze + ' médailles de bronze</span>';
