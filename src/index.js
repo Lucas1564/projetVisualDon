@@ -2,13 +2,12 @@ import * as d3 from 'd3';
 import athletes from '../assets/data/Medalists.csv';
 import pays from '../assets/data/Medals_Standing.csv';
 import agenda from '../assets/data/Olympic Schedule.csv';
-//import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import renderCalSection from './sections/cal'
 
-console.log(athletes);
-console.log(pays);
-console.log(agenda);
+//console.log(athletes);
+//console.log(pays);
+//console.log(agenda);
 
 
 // Les tags dont nous avons besoin pour afficher les athletes
@@ -19,37 +18,29 @@ const toggleTop10Details = document.getElementById('toggleTop10Details')
 //creating a default Array constructor
 const athleteArray = new Set();
 
-
-
-
-
+//Traite tous les athlete suisses et les mets dans un tableau
 for (var i = 0; i < athletes.length; i++) {
-  var athlete = athletes[i];
   if (athletes[i].NOC == " Switzerland") {
     athleteArray.add(athletes[i].NAME);
   }
 }
+//Parcourt ce tableau de suisses et y ajoute les images correspondantes
 for (let athleteName of athleteArray) {
   for (var i = 0; i < athletes.length; i++) {
     if (athletes[i].NAME == athleteName) {
       const newAthlete = athleteListItemTemplate.content.cloneNode(true) // true pour cloner également les enfants du node
-      // On modifie le lien pour lui mettre un href du style "#artists-id"
+      // On modifie le lien pour lui mettre un href du style "#athlete-i"
       newAthlete.querySelector('a').href = '#athlete-' + i
       // On set la bonne image
       newAthlete.querySelector('img').src = "img/athletes/" + athletes[i].NAME.split(' ')[0] + ".png"
-      //alert(athletes[i].NAME.split(' ')[0]);
       newAthlete.querySelector('.athlete-list-item-title').innerText = athleteName
       athleteList.append(newAthlete)
       break;
     }
   }
 }
-console.log(athleteArray)
 
-for (var i = 0; i < pays.length; i++) {
-  console.log(pays[i].NOC + " " + pays[i].Gold)
-}
-
+//Controle la longueur du calendrier des JO
 for (var i = 0; i < agenda.length; i++) {
   var cal = (Object.keys(agenda[i]).length) - 2;
 }
@@ -61,7 +52,7 @@ for (var j = 1; j < cal; j++) {
   document.querySelector("." + day).innerText = jour
 }
 
-
+// Popup onclick athlètes
 function renderPopup(athlete) {
   document.querySelector('.medalPopup').innerHTML = "";
   document.querySelector('.eventPopup').innerHTML = "";
@@ -96,7 +87,6 @@ function renderPopup(athlete) {
 
 // Affichage d'une section
 function displaySection() {
-  // S'il n'y a pas de hash (par ex, on est sur "localhost:8080/"), le défaut devient '#home'
   const section = window.location.hash || '#home'
   const sectionSplit = section.split('-')
 
@@ -109,7 +99,7 @@ function displaySection() {
         const currents = document.querySelectorAll('.events');
 
         currents.forEach(current => {
-          // ✅ Remove class from each element
+          // Remove class from each element
           current.classList.remove('current-day');
         });
         document.querySelector(".day" + sectionSplit[1]).classList.add("current-day")
@@ -174,15 +164,15 @@ function graphSport(sportNom) {
   if (nrbMedal == 1) {
     nrbMedal = 2
   }
-  // set the dimensions and margins of the graph
+  // Set les dimensions et les marges
   const widthPie = 80 * nrbMedal,
     heightPie = 80 * nrbMedal,
     marginPie = 20;
 
-  // The radius of the pieplot is half the width or half the height (smallest one). I subtract a bit of margin.
+  // Rayon du pie chart, en fonction du nombre de médailles gagnées
   const radius = 30 * nrbMedal
 
-  // append the svg object to the div called 'my_dataviz'
+  // Append svg
   const svgPie = d3.select("#my_dataviz")
     .append("svg")
     .attr("width", widthPie)
@@ -190,23 +180,21 @@ function graphSport(sportNom) {
     .append("g")
     .attr("transform", `translate(${widthPie / 2}, ${heightPie / 2})`);
 
-  // set the color scale
+  // Set couleur : gold, silver, medal
   const color = d3.scaleOrdinal([`#FFD700`, `#C0C0C0`, `#CD7F32`]);
 
-  // Compute the position of each group on the pie:
+  // Calcule chaque part du pie chart
   const pie = d3.pie()
     .value(function(d) {
       return d[1]
     })
   const data_ready = pie(Object.entries(data))
-  // Now I know that group A goes from 0 degrees to x degrees and so on.
 
-  // shape helper to build arcs:
   const arcGenerator = d3.arc()
     .innerRadius(0)
     .outerRadius(radius)
 
-  // Build the pie chart: Basically, each part of the pie is a path that we build using the arc function.
+  // Construction du pie chart
   svgPie
     .selectAll('mySlices')
     .data(data_ready)
@@ -227,7 +215,7 @@ function graphSport(sportNom) {
     .attr("x", -10 * nrbMedal / 2)
     .attr("y", -10 * nrbMedal / 2)
 
-  // Now add the annotation. Use the centroid method to get the best coordinates
+  // Add icon au milieu des pie charts
   svgPie
     .selectAll('mySlices')
     .data(data_ready)
@@ -243,9 +231,6 @@ function graphSport(sportNom) {
         }
       }
     })
-    //
-    //Change text
-    //
     .attr("transform", function(d) {
       return `translate(${arcGenerator.centroid(d)})`
     })
@@ -255,7 +240,7 @@ function graphSport(sportNom) {
 
 }
 
-// Create dummy data
+// Data for pie charts
 var sportArray = new Set();
 for (var i = 0; i < athletes.length; i++) {
   if (athletes[i].NOC == " Switzerland") {
@@ -276,7 +261,7 @@ d3.select("body").append("div").attr("class", "barChart");
 d3.select(".barChart").append("svg");
 const myDiv2 = d3.select("svg").attr("width", WIDTH).attr("height", HEIGHT)
 
-//Sort by number of medals
+//Tri par nombre de medailles
 var sortedTabPays = pays.sort(function(a, b) {
   return b.Total - a.Total
 });
@@ -284,9 +269,8 @@ var sortedTabPays = pays.sort(function(a, b) {
 let tabPays = [];
 let tabNbMedaillesPays = [];
 
+//Crée nouveau tableau de 10 pays, pour avoir le top 10 
 for (var i = 0; i < sortedTabPays.length; i++) {
-  //console.log("Médailles gold par pays : "+ pays[i].NOC + " " + pays[i].Total)
-  //console.log("Nbr de colonnes : " + i);
   if (i < 10) {
     tabPays[i] = sortedTabPays[i].NOC;
     tabNbMedaillesPays[i] = sortedTabPays[i].Total;
@@ -302,13 +286,12 @@ var svg = d3.select("svg"),
   width = svg.attr("width") - margin,
   height = svg.attr("height") - margin
 
-
+//Axe x et axe y
 var xScale = d3.scaleBand().range([0, width]).padding(0.5),
   yScale = d3.scaleLinear().range([height, 0]);
 
 var g = svg.append("g")
   .attr("transform", "translate(" + 100 + "," + 100 + ")");
-
 
 xScale.domain(tabPays);
 yScale.domain([0, (d3.max(tabNbMedaillesPays) + 3)]);
@@ -324,7 +307,7 @@ g.append("g")
     return d;
   }).ticks(4));
 
-
+//Construction du bar chart
 g.selectAll(".bar")
   .data(tabNbMedaillesPays)
   .enter().append("rect")
@@ -346,10 +329,9 @@ g.selectAll(".bar")
     var namePays = event.target.getAttribute("data-name");
     renderTop10DetailsPerCountry(namePays, d);
   });
-//.attr("transform", "translate(" + 100 + "," + 100 + ")");
 
 
-
+// Switzerland in the top 10
 xScale.domain(tabPays);
 yScale.domain([0, (d3.max(tabNbMedaillesPays) + 3)]);
 
@@ -383,6 +365,7 @@ g.selectAll(".bar")
 document.querySelector('[data-name="Switzerland"]').style.fill = "#DA291C";
 
 
+// Popup top 10
 function renderTop10DetailsPerCountry(name, medal) {
   var gold;
   var silver;
@@ -409,11 +392,9 @@ function renderTop10DetailsPerCountry(name, medal) {
   toggleTop10Details.replaceChildren(newToggleTop10Details);
   toggleTop10Details.classList.remove('hidden');
 
-  //console.log(data);
-  //console.log(data.length);
-
 }
 
+//JS code for scroll, hidden elements, etc... 
 function scroll() {
   const scrollElements = document.querySelectorAll(".js-scroll");
 

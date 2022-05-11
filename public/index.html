@@ -7,7 +7,7 @@
   <link rel="shortcut icon" href="../assets/img/favicon.ico">
   <link href="../assets/css/main.css">
   <style>
-    /*----------------------------------------------
+/*----------------------------------------------
 CSS settings for HTML div Exact Center
 ------------------------------------------------*/
     #abc {
@@ -438,7 +438,7 @@ CSS settings for HTML div Exact Center
       transform: scale(1.05) rotate(1deg);
     }
 
-    /* ---------- TOP10DETAILs ---------- */
+    /* ---------- TOP10DETAILS ---------- */
 
     #top10Details {
       margin-top: 300px;
@@ -659,7 +659,7 @@ CSS settings for HTML div Exact Center
   <div class="container">
     <div class="row">
 
-      <!------------------------------------------------------------------------------------------------------------>
+      <!--------------------------------------------- Section athlètes --------------------------------------------------------------->
 
       <section id="athlete-section">
         <h2 id="menuAthletes">Athlètes suisses médaillés</h2>
@@ -682,9 +682,7 @@ CSS settings for HTML div Exact Center
       </section>
 
 
-
-
-      <!------------------------------------------------------------------------------------------------------------>
+      <!--------------------------------------------- Section calendrier --------------------------------------------------------------->
 
       <section id="calendrier-section">
         <h2 id="menuCalendrier">Calendrier des Jeux Olympiques 2022 de Pékin</h2>
@@ -759,8 +757,7 @@ CSS settings for HTML div Exact Center
       </section>
 
 
-
-      <!------------------------------------------------------------------------------------------------------------>
+      <!--------------------------------------------- Section sports du jour : date --------------------------------------------------------------->
 
 
       <section id="date-section" style="white-space: pre;">
@@ -784,10 +781,7 @@ CSS settings for HTML div Exact Center
       </section>
 
 
-      <!------------------------------------------------------------------------------------------------------------>
-
-      <!------------------------------------------------------------------------------------------------------------>
-
+      <!--------------------------------------------- Section sports du jour : event --------------------------------------------------------------->
 
       <section id="event-section" style="white-space: pre;">
 
@@ -819,9 +813,7 @@ CSS settings for HTML div Exact Center
       </section>
 
 
-      <!------------------------------------------------------------------------------------------------------------>
-
-      <!------------------------------------------------------------------------------------------------------------>
+      <!--------------------------------------------- Section sports du jour : medals --------------------------------------------------------------->
 
       <section id="medaille-section">
 
@@ -841,14 +833,11 @@ CSS settings for HTML div Exact Center
       </section>
 
 
-      <!------------------------------------------------------------------------------------------------------------>
-
-      <!------------------------------------------------------------------------------------------------------------>
+      <!--------------------------------------------- Popup athlètes --------------------------------------------------------------->
 
       <div id="abc">
         <!-- Popup Div Starts Here -->
         <div id="popupContact">
-          <!-- Contact Us Form -->
           <div id="form" name="form">
             <img id="close" src="https://d29fhpw069ctt2.cloudfront.net/icon/image/39219/preview.png" width="25" onclick="div_hide()">
             <div class="row">
@@ -877,9 +866,9 @@ CSS settings for HTML div Exact Center
         </div>
       </div>
 
-      <!------------------------------------------------------------------------------------------------------------>
 
 
+      <!--------------------------------------------- Section top10 + popup --------------------------------------------------------------->
 
       <section id="athlete-section">
         <h2 id="menuClassement">Top 10 des pays les plus médaillés</h2>
@@ -908,7 +897,7 @@ CSS settings for HTML div Exact Center
       </section>
 
 
-      <!------------------------------------------------------------------------------------------------------------>
+      <!--------------------------------------------- Section pie chart --------------------------------------------------------------->
 
       <section id="athlete-section">
         <h2 id="menuDisciplines">Répartition des médailles Suisses, d'après les sports</h2>
@@ -924,7 +913,7 @@ CSS settings for HTML div Exact Center
     <i class="fas fa-arrow-up">↑</i>
   </button>
 
-
+  <!-- Popup close -->
   <script>
     function div_hide() {
       document.getElementById("abc").style.display = "none";
@@ -933,6 +922,8 @@ CSS settings for HTML div Exact Center
     function hide_info() {
       document.getElementById("toggleTop10Details").style.display = "none";
     }
+
+    //--------------------------------------------- Back to top button ---------------------------------------------------------------
 
     //Get the button
     let mybutton = document.getElementById("btn-back-to-top");

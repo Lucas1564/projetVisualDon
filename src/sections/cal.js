@@ -9,7 +9,7 @@ const dateListItemTemplate = document.querySelector('#date-list-item-template')
 const eventlist = document.querySelector('.event-list')
 const eventListItemTemplate = document.querySelector('#event-list-item-template')
 
-// Les tags dont nous avons besoin pour afficher les events
+// Les tags dont nous avons besoin pour afficher les medals
 const medaillelist = document.querySelector('.medaille-list')
 const medailleListItemTemplate = document.querySelector('#medaille-list-item-template')
 
@@ -79,11 +79,13 @@ function renderCal(day) {
 
   }
 
+  // On affiche le jour désiré
   const newDate = dateListItemTemplate.content.cloneNode(true) // true pour cloner également les enfants du node
   newDate.querySelector('h2').innerText = "Voici les événements pour la date : " +dateDay;
 
   var dayNumber = parseInt(day) + 1;  
 
+  // On affiche les détails pour chaque jour, en fonction du switch case
   for (var i = 0; i < agenda.length; i++) {
     switch (dayNumber) {
       case 2:
@@ -355,18 +357,18 @@ function renderCal(day) {
 
     }
   }
+  //Appel de la fonction renderMedaille qui indique les médailles suisses
   renderMedaille()
   datlist.append(newDate)
 
 }
 
-
+//Fonction qui affiche les détails de l'événement, avec les médaillés, leurs pays
 function afficheSport(sport) {
   const newEvent = eventListItemTemplate.content.cloneNode(true) // true pour cloner également les enfants du node
   var sportName = sport;
   var tiretSport = sport.replace("-", ' ');
   var testSport = " " + tiretSport;
-  //creating a default Array constructor
   var eventArray = new Set();
   for (var i = 0; i < medal.length; i++) {
     if (medal[i].SPORTS == testSport) {
@@ -380,12 +382,12 @@ function afficheSport(sport) {
     const sportListItemTemplate = document.querySelector('#sport-list-item-template')
     const newSport = sportListItemTemplate.content.cloneNode(true) // true pour cloner également les enfants du node
     var imgSport = document.createElement('img');
-    //imgSport.src="img/sports/"+sportName+".png";
     imgSport.className = "imgSport";
     newSport.querySelector('.imgSportName').src="img/sports/"+sportName+".png";
     newSport.querySelector('.sportName').innerText = sportName;
     newSport.querySelector('.eventName').innerText = eventName;
 
+    //Affiche les médailles, les drapeaux d'après l'api
     for (var i = 0; i < medal.length; i++) {
       if (medal[i].SPORTS == testSport && medal[i].EVENT == eventName) {
         var paragraph = newSport.querySelector('.medal-list-item-title');
@@ -433,15 +435,13 @@ function afficheSport(sport) {
 }
 
 
-//creating a default Array constructor
+//creating defaults Array constructor
 var goldArray = new Set();
-//creating a default Array constructor
 var silverArray = new Set();
-//creating a default Array constructor
 var bronzeArray = new Set();
 
+
 function afficheMedaille(sport) {
-  var sportName = sport;
   var tiretSport = sport.replace("-", ' ');
   var testSport = " " + tiretSport;
   for (var i = 0; i < medal.length; i++) {
@@ -459,6 +459,7 @@ function afficheMedaille(sport) {
   }
 }
 
+//Fonction qui affiche les médailles suisses du jour
 function renderMedaille() {
   const newMedaille = medailleListItemTemplate.content.cloneNode(true) // true pour cloner également les enfants du node
   if (goldArray.size == 0 && silverArray.size == 0 && bronzeArray.size == 0) {
