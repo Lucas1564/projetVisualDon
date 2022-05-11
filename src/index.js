@@ -10,6 +10,14 @@ import renderCalSection from './sections/cal'
 //console.log(agenda);
 
 
+//En cas de refresh, retour au hash de base
+if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
+  window.location.hash = '';
+} else {
+
+}
+
+
 // Les tags dont nous avons besoin pour afficher les athletes
 const athleteList = document.querySelector('.athlete-list')
 const athleteListItemTemplate = document.querySelector('#athlete-list-item-template')
@@ -208,6 +216,7 @@ function graphSport(sportNom) {
     .style("opacity", 0.7)
   var spaceSport = sportNom.replace(" ", '');
   var tiretSport = spaceSport.replace(" ", '-');
+  // Add icon au milieu des pie charts
   svgPie.append('image')
     .attr('xlink:href', 'img/sports/' + tiretSport + '.png')
     .attr('width', 10 * nrbMedal)
@@ -215,7 +224,7 @@ function graphSport(sportNom) {
     .attr("x", -10 * nrbMedal / 2)
     .attr("y", -10 * nrbMedal / 2)
 
-  // Add icon au milieu des pie charts
+  // Add icon des médailles
   svgPie
     .selectAll('mySlices')
     .data(data_ready)
@@ -265,18 +274,23 @@ const myDiv2 = d3.select("svg").attr("width", WIDTH).attr("height", HEIGHT)
 var sortedTabPays = pays.sort(function(a, b) {
   return b.Total - a.Total
 });
+console.log(sortedTabPays)
 
 let tabPays = [];
 let tabNbMedaillesPays = [];
+var topSuisse;
 
-//Crée nouveau tableau de 10 pays, pour avoir le top 10 
+//Crée nouveau tableau de 10 pays, pour avoir le top 10
 for (var i = 0; i < sortedTabPays.length; i++) {
+  // Intégre top 10 Pays, ainsi que la suisse
   if (i < 10) {
     tabPays[i] = sortedTabPays[i].NOC;
     tabNbMedaillesPays[i] = sortedTabPays[i].Total;
   } else if (sortedTabPays[i].NOC == "Switzerland") {
     tabPays[10] = sortedTabPays[i].NOC;
     tabNbMedaillesPays[10] = sortedTabPays[i].Total;
+    var classement = i + 1;
+    topSuisse = "Top " + classement;
   }
 
 }
@@ -307,6 +321,7 @@ g.append("g")
     return d;
   }).ticks(4));
 
+var hauteur;
 //Construction du bar chart
 g.selectAll(".bar")
   .data(tabNbMedaillesPays)
@@ -323,6 +338,7 @@ g.selectAll(".bar")
   })
   .attr("width", xScale.bandwidth())
   .attr("height", function(d) {
+    hauteur = height - yScale(d);
     return height - yScale(d);
   })
   .on("click", function(event, d) {
@@ -331,7 +347,6 @@ g.selectAll(".bar")
   });
 
 
-// Switzerland in the top 10
 xScale.domain(tabPays);
 yScale.domain([0, (d3.max(tabNbMedaillesPays) + 3)]);
 
@@ -362,11 +377,54 @@ g.selectAll(".bar")
     return height - yScale(d);
   });
 
+// Top Suisse title
+g.append('text')
+  .attr('class', 'topSuisse')
+  .attr('x', width - 50)
+  .attr('y', 60)
+  .text(topSuisse)
+  .attr('opacity', 1);
+
+// arrowhead from
+// http://logogin.blogspot.com/2013/02/d3js-arrowhead-markers.html
+svg.append('defs').append('marker')
+  .attr('id', 'arrowhead')
+  .attr('refY', 2)
+  .attr('markerWidth', 6)
+  .attr('markerHeight', 4)
+  .attr('orient', 'auto')
+  .append('path')
+  .attr('d', 'M 0,0 V 4 L6,2 Z');
+
+g.append('path')
+  .attr('class', 'topArrow')
+  .attr('marker-end', 'url(#arrowhead)')
+  .attr('d', function() {
+    var line = 'M ' + (width - 40) + ' ' + 80;
+    line += ' l 0 ' + 280;
+    return line;
+  })
+  .attr('opacity', 1);
+
+g.selectAll(".bar")
+  .append("text")
+  .classed('bar-title', true)
+  .attr('text-anchor', 'middle')
+  .attr("x", d => xScale.bandwidth() / 2)
+  .attr("y", d => yScale(d))
+  .text(d => `${d}`);
+
+
 document.querySelector('[data-name="Switzerland"]').style.fill = "#DA291C";
 
 
 // Popup top 10
 function renderTop10DetailsPerCountry(name, medal) {
+  document.querySelectorAll(".bar").forEach(el => {
+    el.style.fill = "#000";
+  });
+  document.querySelector('[data-name="Switzerland"]').style.fill = "#DA291C";
+  document.querySelector('[data-name="' + name + '"]').style.fill = "#74abf7";
   var gold;
   var silver;
   var bronze;
@@ -383,7 +441,11 @@ function renderTop10DetailsPerCountry(name, medal) {
   }
   document.getElementById("toggleTop10Details").style.display = "block";
   const newToggleTop10Details = templateTop10Details.content.cloneNode(true);
-  newToggleTop10Details.querySelector('h2').textContent = name;
+  if (name == "Switzerland") {
+    newToggleTop10Details.querySelector('h2').textContent = name + " (" + topSuisse + ")";
+  } else {
+    newToggleTop10Details.querySelector('h2').textContent = name;
+  }
   newToggleTop10Details.querySelector('.enteteTop10Details').textContent = "Voici la répartition des médailles pour : ";
   newToggleTop10Details.querySelector('.imgPaysTop10').innerHTML += '<img alt="image" src="https://countryflagsapi.com/png/' + nameSpecialFlag + '" width="50"> <span>' + name + '</span>';
   newToggleTop10Details.querySelector('.gold-list-item-info').innerHTML += '<img alt="image" src="https://cdn-icons-png.flaticon.com/512/179/179249.png" width="50"> <span>' + gold + ' médailles d\'or</span>';
@@ -394,7 +456,7 @@ function renderTop10DetailsPerCountry(name, medal) {
 
 }
 
-//JS code for scroll, hidden elements, etc... 
+//JS code for scroll, hidden elements, etc...
 function scroll() {
   const scrollElements = document.querySelectorAll(".js-scroll");
 

@@ -7,7 +7,7 @@
   <link rel="shortcut icon" href="../assets/img/favicon.ico">
   <link href="../assets/css/main.css">
   <style>
-/*----------------------------------------------
+    /*----------------------------------------------
 CSS settings for HTML div Exact Center
 ------------------------------------------------*/
     #abc {
@@ -626,6 +626,20 @@ CSS settings for HTML div Exact Center
     .bar {
       cursor: pointer;
     }
+
+    .topArrow {
+      stroke: #000;
+      stroke-width: 4px;
+    }
+
+    .topSuisse {
+      font-size: 30px;
+      text-anchor: middle;
+    }
+
+    .bar-title {
+      font-family: 'Ubuntu';
+    }
   </style>
   <script src="https://d3js.org/d3.v6.js"></script>
 </head>
@@ -920,6 +934,10 @@ CSS settings for HTML div Exact Center
     }
 
     function hide_info() {
+      document.querySelectorAll(".bar").forEach(el => {
+        el.style.fill = "#000";
+      });
+      document.querySelector('[data-name="Switzerland"]').style.fill = "#DA291C";
       document.getElementById("toggleTop10Details").style.display = "none";
     }
 
