@@ -284,11 +284,17 @@ var sortedTabPays = pays.sort(function(a, b) {
 let tabPays = [];
 let tabNbMedaillesPays = [];
 
-for (var i = 0; i < 10; i++) {
+for (var i = 0; i < sortedTabPays.length; i++) {
   //console.log("Médailles gold par pays : "+ pays[i].NOC + " " + pays[i].Total)
   //console.log("Nbr de colonnes : " + i);
-  tabPays[i] = sortedTabPays[i].NOC;
-  tabNbMedaillesPays[i] = sortedTabPays[i].Total;
+  if (i < 10) {
+    tabPays[i] = sortedTabPays[i].NOC;
+    tabNbMedaillesPays[i] = sortedTabPays[i].Total;
+  } else if (sortedTabPays[i].NOC == "Switzerland") {
+    tabPays[10] = sortedTabPays[i].NOC;
+    tabNbMedaillesPays[10] = sortedTabPays[i].Total;
+  }
+
 }
 
 var svg = d3.select("svg"),
@@ -373,6 +379,8 @@ g.selectAll(".bar")
   .attr("height", function(d) {
     return height - yScale(d);
   });
+
+document.querySelector('[data-name="Switzerland"]').style.fill = "#DA291C";
 
 
 function renderTop10DetailsPerCountry(name, medal) {
