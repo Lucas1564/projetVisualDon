@@ -2,12 +2,17 @@ import * as d3 from 'd3';
 import athletes from '../assets/data/Medalists.csv';
 import pays from '../assets/data/Medals_Standing.csv';
 import agenda from '../assets/data/Olympic Schedule.csv';
+import population from '../assets/data/population.csv';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import renderCalSection from './sections/cal'
+
+//Webscapping
+
 
 //console.log(athletes);
 //console.log(pays);
 //console.log(agenda);
+console.log(population);
 
 
 //En cas de refresh, retour au hash de base
@@ -418,8 +423,26 @@ g.selectAll(".bar")
 document.querySelector('[data-name="Switzerland"]').style.fill = "#DA291C";
 
 
+var nbrhabitant = 100000;
+
+function apiPopulation(pays) {
+  if (pays == "USA") {
+    pays = "United States"
+  } else if (pays == "ROC") {
+    pays = "Russia"
+  }
+  // Cherche Pays dans les données population(pas trouvé API gratuite)
+  for (var i = 0; i < population.length; i++) {
+    if (population[i].Country == pays) {
+      nbrhabitant = population[i].Population
+    }
+  }
+}
+
+
 // Popup top 10
 function renderTop10DetailsPerCountry(name, medal) {
+  apiPopulation(name);
   document.querySelectorAll(".bar").forEach(el => {
     el.style.fill = "#000";
   });
@@ -441,6 +464,7 @@ function renderTop10DetailsPerCountry(name, medal) {
   }
   document.getElementById("toggleTop10Details").style.display = "block";
   const newToggleTop10Details = templateTop10Details.content.cloneNode(true);
+  var medalHabitant = nbrhabitant / medal
   if (name == "Switzerland") {
     newToggleTop10Details.querySelector('h2').textContent = name + " (" + topSuisse + ")";
   } else {
@@ -451,6 +475,8 @@ function renderTop10DetailsPerCountry(name, medal) {
   newToggleTop10Details.querySelector('.gold-list-item-info').innerHTML += '<img alt="image" src="https://cdn-icons-png.flaticon.com/512/179/179249.png" width="50"> <span>' + gold + ' médailles d\'or</span>';
   newToggleTop10Details.querySelector('.silver-list-item-info').innerHTML += '<img alt="image" src="https://cdn-icons-png.flaticon.com/512/179/179251.png" width="50"><span>' + silver + ' médailles d\'argent</span>';
   newToggleTop10Details.querySelector('.bronze-list-item-info').innerHTML += '<img alt="image" src="https://cdn-icons-png.flaticon.com/512/179/179250.png" width="50"><span>' + bronze + ' médailles de bronze</span>';
+  newToggleTop10Details.querySelector('.nombreHabit').textContent = 'Nombre habitants : ' + nbrhabitant;
+  newToggleTop10Details.querySelector('.medHabit').textContent = parseInt(medalHabitant, 10) + ' Ratio habitants/médaille';
   toggleTop10Details.replaceChildren(newToggleTop10Details);
   toggleTop10Details.classList.remove('hidden');
 
